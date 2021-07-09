@@ -29,3 +29,7 @@ One good starting point might be to automate the process of installing my `cargo
 I might look into setting my `ZDOTDIR` for `zsh` to `$HOME/.config/zsh` in `zshenv`, to minimize the dotfiles present in my home directory. This ought to be trivial.
 
 It would be convenient to have some profiles that could be optionally included, such as an `nvm`/`npm` profile that would take care of that installation process for me but only if I desire it for the current machine.
+
+# Inspiration and Help
+
+This approach was inspired by many helpful devs online, but is taken most directly from [an Atlassian Git tutorial](https://www.atlassian.com/git/tutorials/dotfiles) on managing dotfiles.
