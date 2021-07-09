@@ -20,5 +20,5 @@ fi
 echo
 echo installing cargo binaries
 echo ----------------------------
-/bin/zsh install-cargo-binaries.sh
+/bin/zsh ${XDG_HOME_CONFIG:-$HOME/.config}/myconf/cargo/install-cargo-binaries.sh
 
