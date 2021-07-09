@@ -7,7 +7,6 @@ echo checking rustup installation
 echo ----------------------------
 
 rustup -V
-echo
 
 if [ "$?" = "0" ] ; then
 	echo rustup found
