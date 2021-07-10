@@ -14,6 +14,8 @@ else
 	echo rustup not found
 	echo installing rustup
 	curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+
+	source $HOME/.cargo/env
 fi
 
 echo
