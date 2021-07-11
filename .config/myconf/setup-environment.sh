@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/zsh
 # AUTHOR:   Evan Platzer
 # DATE:     2021-07-10
 # DESC:     Setup my environment automatically, including:
@@ -65,7 +65,7 @@ if [ $? = 0 ]; then
     echo
 else
     echo Installing starship prompt
-    sh -c "$(curl -fsSL https://starship.rs/install.sh)"
+    zsh -c "$(curl -fsSL https://starship.rs/install.sh)"
     echo Installed starship prompt
     echo
 fi
@@ -79,10 +79,10 @@ else
     echo Installing nix
     case $OSTYPE in
         linux-gnu*)
-            sh <(curl -L https://nixos.org/nix/install)
+            zsh -c "$(curl -fsSL https://nixos.org/nix/install)"
             ;;
         darwin*)
-            sh <(curl -L https://nixos.org/nix/install) --darwin-use-unencrypted-nix-store-volume
+            zsh -c "$(curl -fsSL https://nixos.org/nix/install) --darwin-use-unencrypted-nix-store-volume"
             ;;
         *)
             echo Unrecognized OS - skipping nix installation

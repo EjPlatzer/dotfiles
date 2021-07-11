@@ -10,11 +10,11 @@ echo Installing nix binaries listed at $filepath
 for line in "${(@f)"$(<$filepath)"}"
 {
     echo Checking status of package $line
-    nix-env -q "^$line$" 2> /dev/null
+    nix-env -q "$line" #2> /dev/null
     if [ $? = 0 ]; then
+        echo $line is already installed
+    else
         echo Installing $line
         nix-env -i $line
-    else
-        echo $line is already installed
     fi
 }
