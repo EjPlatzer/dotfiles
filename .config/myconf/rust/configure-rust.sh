@@ -15,6 +15,8 @@ else
 	echo
 fi
 
-echo Installing Rust binaries
-/bin/zsh ${XDG_HOME_CONFIG:-$HOME/.config}/myconf/rust/install-rust-binaries.sh
+# Trading cargo installations for nix package manager
+# because cargo is mostly meant for rust development tools
+# echo Installing Rust binaries
+# /bin/zsh ${XDG_HOME_CONFIG:-$HOME/.config}/myconf/rust/install-rust-binaries.sh
 

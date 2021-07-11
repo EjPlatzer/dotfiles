@@ -8,3 +8,4 @@ export ZDOTDIR=$XDG_CONFIG_HOME/zsh
 
 # rustup shell setup
 source "$HOME/.cargo/env"
+if [ -e /Users/evan.platzer/.nix-profile/etc/profile.d/nix.sh ]; then . /Users/evan.platzer/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
