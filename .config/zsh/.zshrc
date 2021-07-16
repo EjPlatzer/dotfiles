@@ -29,3 +29,5 @@ eval "$(zoxide init zsh)"
 
 # Start starship prompt
 eval "$(starship init zsh)"
+
+macchina
