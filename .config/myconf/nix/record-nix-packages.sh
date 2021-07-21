@@ -11,5 +11,5 @@ if [ -f $filepath ]; then
 fi
 
 echo Saving list of nix packages installed to $filepath
-# nix-env -qa --installed | sd '([\w-])-([\d0.]+){1,3}$' '$1' >> $filepath
-nix-env -q >> $filepath
+nix-env -q | sd '([\w-])-([\d0.]+){1,3}$' '$1' >> $filepath
+# nix-env -q >> $filepath
