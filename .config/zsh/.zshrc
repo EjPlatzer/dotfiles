@@ -16,12 +16,16 @@ fpath+=${ZDOTDIR:-~}/.zsh_functions
 autoload -Uz compinit
 compinit
 
+# less - use XDG Directories
+export LESSHISTFILE="${XDG_CONFIG_HOME}/less/history"
+export LESSKEY="${XDG_CONFIG_HOME}/less/keys"
+
 # Add config alias to manage config files
 alias config='/usr/bin/git  --git-dir=$HOME/.myconf --work-tree=$HOME'
 alias mysql='/usr/local/mysql/bin/mysql'
-alias cd='echo "This is not the command you are looking for."; false'
-alias ls='echo "This is not the command you are looking for."; false'
-alias rm='echo "This is not the command you are looking for."; false'
+alias cd='echo "This is not the command you are looking for. Try z instead."; false'
+alias ls='echo "This is not the command you are looking for. Try exa instead."; false'
+alias rm='echo "This is not the command you are looking for. Try trash instead."; false'
 
 # Load nvm
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
