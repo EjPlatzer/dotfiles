@@ -10,23 +10,30 @@ The scripts in this repo only work in \*nix environments. The configuration file
 
 # Currently Synced
 
--   `.gitconfig`
+-   `git`, including:
+    -	configuration file
+    -	global ignore file
 -   `zsh` shell, including:
     -   appropriate dotfiles (`.zshenv`, `.zshrc`, `.zprofile`)
     -   `starship` prompt
 -   `alacritty` terminal emulator
     -   Presently, only configuration files are synced. It may be worth automating installation in the future
--   `.vimrc`
+-   `vim` editor configuration, including
+    -   `xdg.vim` to cause vim to use XDG Directories (in concert with setting `$VIMINIT` in `zshrc`
+    -	`vimrc`
+    -	Dracula theme pack
+-   Joplin settings (may currently be MacOS specific)
+<!-- Not currently synced
 -   Rust, including:
     -   `rustup` toolchain manager
     -   `cargo`, the Rust package manager
     -   Rust binaries as found in `.config/myconf/rust/rust-binaries.cfg`
+-->
 
 # To Sync
 
 Applications/configurations that still require syncing:
 
--   Joplin
 -   VSCode
 -   dotnet?
 
