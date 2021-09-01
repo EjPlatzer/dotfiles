@@ -20,6 +20,9 @@ compinit
 export LESSHISTFILE="${XDG_CONFIG_HOME}/less/history"
 export LESSKEY="${XDG_CONFIG_HOME}/less/keys"
 
+# Macchina config file
+export MACCHINA_CONF="${XDG_CONFIG_HOME}/macchina/macchina.toml"
+
 # Add config alias to manage config files
 alias config='/usr/bin/git  --git-dir=$HOME/.myconf --work-tree=$HOME'
 alias mysql='/usr/local/mysql/bin/mysql'
