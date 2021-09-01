@@ -19,6 +19,9 @@ compinit
 # Add config alias to manage config files
 alias config='/usr/bin/git  --git-dir=$HOME/.myconf --work-tree=$HOME'
 alias mysql='/usr/local/mysql/bin/mysql'
+alias cd='echo "This is not the command you are looking for."; false'
+alias ls='echo "This is not the command you are looking for."; false'
+alias rm='echo "This is not the command you are looking for."; false'
 
 # Load nvm
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
