@@ -23,6 +23,9 @@ export LESSKEY="${XDG_CONFIG_HOME}/less/keys"
 # Macchina config file
 export MACCHINA_CONF="${XDG_CONFIG_HOME}/macchina/macchina.toml"
 
+# python startup configuration
+export PYTHONSTARTUP="${XDG_CONFIG_HOME:-$HOME/.config}/python/startup.py"
+
 # Add config alias to manage config files
 alias config='/usr/bin/git  --git-dir=$HOME/.myconf --work-tree=$HOME'
 alias mysql='/usr/local/mysql/bin/mysql'
