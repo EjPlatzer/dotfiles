@@ -6,6 +6,4 @@ export XDG_STATE_HOME=$HOME/.local/state
 
 export ZDOTDIR=$XDG_CONFIG_HOME/zsh
 
-# rustup shell setup
-if [ -e $HOME/.cargo/env ]; then  source "$HOME/.cargo/env"; fi
 if [ -e $HOME/.nix-profile/etc/profile.d/nix.sh ]; then . $HOME/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer

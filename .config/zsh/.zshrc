@@ -26,6 +26,10 @@ export MACCHINA_CONF="${XDG_CONFIG_HOME}/macchina/macchina.toml"
 # python startup configuration
 export PYTHONSTARTUP="${XDG_CONFIG_HOME:-$HOME/.config}/python/startup.py"
 
+# rustup shell setup
+export CARGO_HOME="$XDG_DATA_HOME/cargo"
+if [ -e $CARGO_HOME/env ]; then source "$CARGO_HOME/env"; fi
+
 # Add config alias to manage config files
 alias config='/usr/bin/git  --git-dir=$HOME/.myconf --work-tree=$HOME'
 alias mysql='/usr/local/mysql/bin/mysql'
@@ -33,8 +37,13 @@ alias cd='echo "This is not the command you are looking for. Try z instead."; fa
 alias ls='echo "This is not the command you are looking for. Try exa instead."; false'
 alias rm='echo "This is not the command you are looking for. Try trash instead."; false'
 
+
+# dotnet
+export DOTNET_ROOT=$XDG_DATA_HOME/dotnet
+export PATH=$PATH:$DOTNET_ROOT:$HOME/.dotnet/tools
+
 # Load nvm
-export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+export NVM_DIR="$([ -z "${XDG_DATA_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_DATA_HOME}/nvm")"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 
 # Start zoxide
