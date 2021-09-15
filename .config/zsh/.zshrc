@@ -36,7 +36,7 @@ alias mysql='/usr/local/mysql/bin/mysql'
 alias cd='echo "This is not the command you are looking for. Try z instead."; false'
 alias ls='echo "This is not the command you are looking for. Try exa instead."; false'
 alias rm='echo "This is not the command you are looking for. Try trash instead."; false'
-
+alias vz='vim $ZDOTDIR/.zshrc'
 
 # dotnet
 export DOTNET_ROOT=$XDG_DATA_HOME/dotnet
