@@ -1,3 +1,6 @@
+# Time startup with zprof
+zmodload zsh/zprof
+
 # Use vim keybindings
 bindkey -v
 
@@ -30,6 +33,16 @@ export PYTHONSTARTUP="${XDG_CONFIG_HOME:-$HOME/.config}/python/startup.py"
 export CARGO_HOME="$XDG_DATA_HOME/cargo"
 if [ -e $CARGO_HOME/env ]; then source "$CARGO_HOME/env"; fi
 
+# dotnet
+export DOTNET_ROOT=$XDG_DATA_HOME/dotnet
+if [ -e $DOTNET_ROOT/dotnet ]; then
+	export PATH=$PATH:$DOTNET_ROOT:$HOME/.dotnet/tools;
+fi
+
+# Load nvm
+export NVM_DIR="$([ -z "${XDG_DATA_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_DATA_HOME}/nvm")"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+
 # Add config alias to manage config files
 alias config='/usr/bin/git  --git-dir=$HOME/.myconf --work-tree=$HOME'
 alias mysql='/usr/local/mysql/bin/mysql'
@@ -37,14 +50,6 @@ alias cd='echo "This is not the command you are looking for. Try z instead."; fa
 alias ls='echo "This is not the command you are looking for. Try exa instead."; false'
 alias rm='echo "This is not the command you are looking for. Try trash instead."; false'
 alias vz='vim $ZDOTDIR/.zshrc'
-
-# dotnet
-export DOTNET_ROOT=$XDG_DATA_HOME/dotnet
-export PATH=$PATH:$DOTNET_ROOT:$HOME/.dotnet/tools
-
-# Load nvm
-export NVM_DIR="$([ -z "${XDG_DATA_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_DATA_HOME}/nvm")"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 
 # Start zoxide
 eval "$(zoxide init zsh)"
