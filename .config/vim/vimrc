@@ -1,5 +1,0 @@
-source $XDG_CONFIG_HOME/vim/xdg.vim
-
-packadd! dracula
-syntax enable
-colorscheme dracula

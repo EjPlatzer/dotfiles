@@ -14,14 +14,13 @@ The scripts in this repo only work in \*nix environments. The configuration file
     -	configuration file
     -	global ignore file
 -   `zsh` shell, including:
-    -   appropriate dotfiles (`.zshenv`, `.zshrc`, `.zprofile`)
+    -   appropriate dotfiles (`.zshenv`, `.zshrc`)
     -   `starship` prompt
 -   `alacritty` terminal emulator
     -   Presently, only configuration files are synced. It may be worth automating installation in the future
--   `vim` editor configuration, including
-    -   `xdg.vim` to cause vim to use XDG Directories (in concert with setting `$VIMINIT` in `zshrc`
-    -	`vimrc`
-    -	Dracula theme pack
+-   `neovim` editor configuration, including
+    -	`init.vim` configuration file	
+    -	using `vim-plug` to manage plugins
 -   Joplin settings (may currently be MacOS specific)
 <!-- Not currently synced
 -   Rust, including:
