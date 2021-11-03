@@ -37,9 +37,6 @@ if [ -e $CARGO_HOME/env ]; then source "$CARGO_HOME/env"; fi
 alias config='/usr/bin/git  --git-dir=$HOME/.myconf --work-tree=$HOME'
 alias vim='nvim'
 alias mysql='/usr/local/mysql/bin/mysql'
-alias cd='echo "This is not the command you are looking for. Try z instead."; false'
-alias ls='echo "This is not the command you are looking for. Try exa instead."; false'
-alias rm='echo "This is not the command you are looking for. Try trash instead."; false'
 alias vz='vim $ZDOTDIR/.zshrc'
 alias cl='clear; macchina'
 
