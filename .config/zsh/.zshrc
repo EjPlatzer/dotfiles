@@ -34,11 +34,24 @@ export CARGO_HOME="$XDG_DATA_HOME/cargo"
 if [ -e $CARGO_HOME/env ]; then source "$CARGO_HOME/env"; fi
 
 # Add aliases for convenience
-alias config='/usr/bin/git  --git-dir=$HOME/.myconf --work-tree=$HOME'
 alias vim='nvim'
-alias mysql='/usr/local/mysql/bin/mysql'
 alias vz='vim $ZDOTDIR/.zshrc'
+
+# Utils aliases
 alias cl='clear; macchina'
+alias eal='exa -al'
+alias et='exa -alTL' # -L flag expects a number for depth of tree
+alias fh='fd -iIH'
+alias ..='z ..'
+
+# Git aliases
+alias config='/usr/bin/git  --git-dir=$HOME/.myconf --work-tree=$HOME'
+alias gs='git status'
+alias gd='git checkout develop'
+alias gbd='git branch -d'
+alias gS='git stash list'
+alias gc='git checkout'
+alias gn='git checkout -b'
 
 # dotnet
 export DOTNET_ROOT=$XDG_DATA_HOME/dotnet
