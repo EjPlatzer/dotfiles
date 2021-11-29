@@ -38,7 +38,6 @@ alias vim='nvim'
 alias vz='vim $ZDOTDIR/.zshrc'
 
 # Utils aliases
-alias cl='clear; macchina'
 alias eal='exa -al'
 alias et='exa -alTL' # -L flag expects a number for depth of tree
 alias fh='fd -iIH'
@@ -76,5 +75,3 @@ eval "$(zoxide init zsh)"
 
 # Start starship prompt
 eval "$(starship init zsh)"
-
-macchina
