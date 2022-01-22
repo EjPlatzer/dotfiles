@@ -34,17 +34,10 @@ export CARGO_HOME="$XDG_DATA_HOME/cargo"
 if [ -e $CARGO_HOME/env ]; then source "$CARGO_HOME/env"; fi
 
 # Add aliases for convenience
-alias vim='nvim'
 alias vz='vim $ZDOTDIR/.zshrc'
 
-# Utils aliases
-alias eal='exa -al'
-alias et='exa -alTL' # -L flag expects a number for depth of tree
-alias fh='fd -iIH'
-alias ..='z ..'
-
 # Git aliases
-alias config='/usr/bin/git  --git-dir=$HOME/.myconf --work-tree=$HOME'
+alias myconf='/usr/bin/git  --git-dir=$HOME/.myconf --work-tree=$HOME'
 alias gs='git status'
 alias gd='git checkout develop'
 alias gb='git branch'
@@ -70,8 +63,8 @@ export PATH=$PATH:$GEM_HOME/bin
 export NVM_DIR="$([ -z "${XDG_DATA_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_DATA_HOME}/nvm")"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 
-# Start zoxide
-eval "$(zoxide init zsh)"
+# nushell
+if [ -e $XDG_DATA_HOME/nu ]; then PATH=$PATH:"$XDG_DATA_HOME/nu/bin"; fi
 
 # Start starship prompt
 eval "$(starship init zsh)"
