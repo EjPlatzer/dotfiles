@@ -1,5 +1,4 @@
 complete_from_path = true
-editor = "nvim"
 path = ["/usr/local/bin", "/usr/bin", "/bin", "/usr/sbin", "/sbin", "/Applications/VMware Fusion.app/Contents/Public", "/Library/Apple/usr/bin", "/Users/evan/.nix-profile/bin", "/Users/evan/.local/share/flutter/bin", "/Users/evan/.local/share/gem/bin", "/Users/evan/.local/share/nu/bin/", "/Users/evan/.local/share/nvim/bin", "/Users/evan/.local/share/delta/bin"]
 pivot_mode = "auto"
 prompt = "STARSHIP_SHELL= starship prompt"
@@ -33,6 +32,8 @@ STARSHIP_SHELL = "nu"
 TERM = "xterm-256color"
 TMPDIR = "/var/folders/9h/rfw2b99j02zcbv8g8knn_btr0000gn/T/"
 USER = "evan"
+VISUAL = "nvim"
+EDITOR = "nvim"
 XDG_CACHE_HOME = "/Users/evan/.cache"
 XDG_CONFIG_HOME = "/Users/evan/.config"
 XDG_DATA_HOME = "/Users/evan/.local/share"
