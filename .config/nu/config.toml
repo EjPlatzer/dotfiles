@@ -1,21 +1,12 @@
 complete_from_path = true
-path = ["/usr/local/bin", "/usr/bin", "/bin", "/usr/sbin", "/sbin", "/Applications/VMware Fusion.app/Contents/Public", "/Library/Apple/usr/bin", "/Users/evan/.nix-profile/bin", "/Users/evan/.local/share/flutter/bin", "/Users/evan/.local/share/gem/bin", "/Users/evan/.local/share/nu/bin/"]
+editor = "nvim"
+path = ["/usr/local/bin", "/usr/bin", "/bin", "/usr/sbin", "/sbin", "/Applications/VMware Fusion.app/Contents/Public", "/Library/Apple/usr/bin", "/Users/evan/.nix-profile/bin", "/Users/evan/.local/share/flutter/bin", "/Users/evan/.local/share/gem/bin", "/Users/evan/.local/share/nu/bin/", "/Users/evan/.local/share/nvim/bin", "/Users/evan/.local/share/delta/bin"]
 pivot_mode = "auto"
 prompt = "STARSHIP_SHELL= starship prompt"
 rm_always_trash = true
 skip_welcome_message = true
 startup = ["source ~/.config/nu/scripts/startup-commands.nu"]
 table_mode = "rounded"
-
-[line_editor]
-edit_mode = "vim"
-
-[text_view]
-colored_output = true
-header = true
-line_numbers = true
-pager = "less"
-paging_mode = "quitifonescreen"
 
 [env]
 ALACRITTY_LOG = "/var/folders/9h/rfw2b99j02zcbv8g8knn_btr0000gn/T/Alacritty-22167.log"
@@ -50,3 +41,13 @@ XPC_FLAGS = "0x0"
 XPC_SERVICE_NAME = "0"
 __CFBundleIdentifier = "io.alacritty"
 __CF_USER_TEXT_ENCODING = "0x1F5:0x0:0x0"
+
+[line_editor]
+edit_mode = "vim"
+
+[text_view]
+colored_output = true
+header = true
+line_numbers = true
+pager = "less"
+paging_mode = "quitifonescreen"
