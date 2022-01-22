@@ -1,6 +1,6 @@
 path = ["/usr/local/bin", "/usr/bin", "/bin", "/usr/sbin", "/sbin", "/Applications/VMware Fusion.app/Contents/Public", "/Library/Apple/usr/bin", "/Users/evan/.nix-profile/bin", "/Users/evan/.local/share/flutter/bin", "/Users/evan/.local/share/gem/bin", "/Users/evan/.local/share/nu/bin/"]
 prompt = "STARSHIP_SHELL= starship prompt"
-startup = ["def myconf [...rest] {\n  if (($rest | length) > 0 ) {\n    let subcommands = ($rest | reduce { build-string $acc \" \" $it })\n    nu -c $\"git --work-tree=($nu.env.HOME) --git-dir=($nu.env.HOME)/.myconf ($subcommands)\"\n  } {\n    nu -c $\"git --work-tree=($nu.env.HOME) --git-dir=($nu.env.HOME)/.myconf\"\n  }\n}"]
+startup = ["source ~/.config/nu/scripts/startup-commands.nu"]
 
 [env]
 ALACRITTY_LOG = "/var/folders/9h/rfw2b99j02zcbv8g8knn_btr0000gn/T/Alacritty-22167.log"
