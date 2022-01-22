@@ -1,6 +1,13 @@
 [user]
     email = evan.platzer@gmail.com
     name = Evan Platzer
+
+[core]
+    pager = delta
+
+[merge]
+    conflictstyle = diff3
+
 [pull]
     ff = only
 
@@ -16,4 +23,7 @@
 [delta]
         navigate = true
         syntax-theme = Dracula
+
+[diff]
+    colorMoved = default
 
