@@ -4,7 +4,7 @@ pivot_mode = "auto"
 prompt = "STARSHIP_SHELL= starship prompt"
 rm_always_trash = true
 skip_welcome_message = true
-startup = ["source ~/.config/nu/scripts/startup-commands.nu"]
+startup = ["source ~/.config/nu/scripts/startup-commands.nu", "zoxide init nushell --hook prompt | save ~/.config/nu/scripts/zoxide.nu", "source ~/.config/nu/scripts/zoxide.nu"]
 table_mode = "rounded"
 
 [env]
