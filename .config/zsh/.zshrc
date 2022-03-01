@@ -62,9 +62,8 @@ export PATH=$PATH:$XDG_DATA_HOME/flutter/bin
 export GEM_HOME=$XDG_DATA_HOME/gem
 export PATH=$PATH:$GEM_HOME/bin
 
-# Load nvm
-export NVM_DIR="$([ -z "${XDG_DATA_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_DATA_HOME}/nvm")"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+# nushell
+if [ -e $XDG_DATA_HOME/nu ]; then PATH=$PATH:"$XDG_DATA_HOME/nu/bin"; fi
 
 # Start starship prompt
 eval "$(starship init zsh)"
