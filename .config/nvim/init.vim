@@ -7,6 +7,7 @@ if empty(glob(data_dir . '/autoload/plug.vim'))
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
+set number
 set relativenumber
 
 " Load plugins
