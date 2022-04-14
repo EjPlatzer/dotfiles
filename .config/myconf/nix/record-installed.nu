@@ -6,10 +6,10 @@
 let filepath = $"(if ($env.XDG_CONFIG_HOME != null) {$env.XDG_CONFIG_HOME} else {$"($nu.home-path)/.config"})/myconf/nix/nix-packages.cfg"
 
 if ($filepath | path exists) {
-	echo "Backing up previous nix packages record"
-	mv $filepath $"($filepath).bak"
+    echo "Backing up previous nix packages record"
+    mv $filepath $"($filepath).bak"
 } else {
-	echo "No previous nix packages record found"
+    echo "No previous nix packages record found"
 }
 
 echo $"Saving list of nix packages installed to ($filepath)"
