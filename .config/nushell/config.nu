@@ -12,7 +12,7 @@ let-env XDG_CACHE_HOME = $"($nu.home-path)/.cache"
 let-env XDG_DATA_HOME = $"($nu.home-path)/.local/share"
 let-env XDG_STATE_HOME = $"($nu.home-path)/.local/state"
 
-let-env PATH = ["/usr/local/bin", "/usr/bin", "/bin", "/usr/sbin", "/sbin", "/Library/Apple/usr/bin", "/nix/var/nix/profiles/default/bin", $"($env.HOME)/.nix-profile/bin"]
+ let-env PATH = [/usr/local/bin, /usr/bin, /bin, /usr/sbin, /sbin, /nix/var/nix/profiles/default/bin, $"($env.HOME)/.nix-profile/bin"]
 
 alias myconf = git --work-tree=/Users/evan --git-dir=/Users/evan/.myconf
 
