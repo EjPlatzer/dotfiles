@@ -4,7 +4,7 @@
 let-env STARSHIP_SHELL = "nu"
 let-env PROMPT_COMMAND = { starship prompt --cmd-duration $env.CMD_DURATION_MS --status $env.LAST_EXIT_CODE }
 hide PROMPT_COMMAND_RIGHT
-let-env PROMPT_INDICATOR = " "
+let-env PROMPT_INDICATOR = ""
 
 # Set XDG Dirs
 let-env XDG_CONFIG_HOME = $"($nu.home-path)/.config"
