@@ -1,19 +1,19 @@
 # Nushell Config File
 
-# Starship prompt
-let-env STARSHIP_SHELL = "nu"
-let-env PROMPT_COMMAND = { starship prompt --cmd-duration $env.CMD_DURATION_MS --status $env.LAST_EXIT_CODE }
-hide PROMPT_COMMAND_RIGHT
-let-env PROMPT_INDICATOR = ""
-
 # Set XDG Dirs
 let-env XDG_CONFIG_HOME = $"($nu.home-path)/.config"
 let-env XDG_CACHE_HOME = $"($nu.home-path)/.cache"
 let-env XDG_DATA_HOME = $"($nu.home-path)/.local/share"
 let-env XDG_STATE_HOME = $"($nu.home-path)/.local/state"
 
- let-env PATH = [/usr/local/bin, /usr/bin, /bin, /usr/sbin, /sbin, /nix/var/nix/profiles/default/bin, $"($env.HOME)/.nix-profile/bin"]
+# Set PATH
+let-env PATH = [/usr/local/bin, /usr/bin, /bin, /usr/sbin, /sbin, /nix/var/nix/profiles/default/bin, $"($env.HOME)/.nix-profile/bin"]
 
+# Starship prompt
+# starship init nu | save $"($nu.home-path)/.cache/starship/init.nu"
+source /Users/evan/.cache/starship/init.nu
+
+# Set dotfiles repo alias
 alias myconf = git --work-tree=/Users/evan --git-dir=/Users/evan/.myconf
 
 # Specifies how environment variables are:

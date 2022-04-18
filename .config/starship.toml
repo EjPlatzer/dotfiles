@@ -3,8 +3,6 @@ success_symbol = "[❯](blue)"
 error_symbol = "[❯](red)"
 vicmd_symbol = "[❮](blue)}"
 
-continuation_prompt = "[┣](blue)"
-
 [directory]
 style = "cyan"
 format = "[ \uf07b $path]($style)[$read_only]($read_only_style) "
