@@ -1,5 +1,9 @@
 # Nushell Config File
 
+# Configure fnm for Node version management
+fnm env --shell bash | lines | last 6 | parse "export {name}="{value}"" | reduce -f {} { |it, acc| $acc | upsert $it.name $it.value } | load-env
+let-env PATH = ($env.PATH | append $"($env.FNM_MULTISHELL_PATH)/bin")
+
 module completions {
   # Custom completions for external commands (those outside of Nushell)
   # Each completions has two parts: the form of the external command, including its flags and parameters

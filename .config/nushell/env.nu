@@ -35,15 +35,24 @@ let-env XDG_CACHE_HOME = $"($nu.home-path)/.cache"
 let-env XDG_DATA_HOME = $"($nu.home-path)/.local/share"
 let-env XDG_STATE_HOME = $"($nu.home-path)/.local/state"
 
+# Set python startup script
+let-env PYTHONSTARTUP = $"($env.XDG_CONFIG_HOME)/python/startup.py"
+
+# Configure Dotnet tools
+let-env DOTNET_ROOT = $"($env.XDG_DATA_HOME)/dotnet"
+
+# Configure ruby gems
+let-env GEM_HOME = $"($env.XDG_DATA_HOME)/gem"
+
 # Set PATH
-let-env PATH = [/usr/local/bin, /usr/bin, /bin, /usr/sbin, /sbin, /nix/var/nix/profiles/default/bin, $"($env.HOME)/.nix-profile/bin"]
+let-env PATH = [/usr/local/bin, /usr/bin, /bin, /usr/sbin, /sbin, /nix/var/nix/profiles/default/bin, $"($env.HOME)/.nix-profile/bin", $"($env.XDG_DATA_HOME)/cargo/bin", $env.DOTNET_ROOT, $"($env.HOME)/.dotnet/tools", $"($env.GEM_HOME)/bin"]
 
 # Set Less history file
 let-env LESSHISTFILE = $"($env.XDG_CONFIG_HOME)/less/history"
 let-env LESSKEY = $"($env.XDG_CONFIG_HOME)/less/keys"
 
 # Starship prompt
-starship init nu | save $"($nu.home-path)/.cache/starship/init.nu"
+starship init nu | save $"($env.XDG_CACHE_HOME)/starship/init.nu"
 source /Volumes/SSD/home/dev/.cache/starship/init.nu
 
 #######################################
