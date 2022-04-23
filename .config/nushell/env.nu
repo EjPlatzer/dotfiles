@@ -44,7 +44,7 @@ let-env LESSKEY = $"($env.XDG_CONFIG_HOME)/less/keys"
 
 # Starship prompt
 starship init nu | save $"($nu.home-path)/.cache/starship/init.nu"
-source /Users/evan/.cache/starship/init.nu
+source /Volumes/SSD/home/dev/.cache/starship/init.nu
 
 #######################################
 #   /_\ | |  |_ _| /_\ / __| __/ __| #
