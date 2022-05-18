@@ -19,6 +19,9 @@ fpath+=${ZDOTDIR:-~}/.zsh_functions
 autoload -Uz compinit
 compinit
 
+# Add nix binaries to path
+export PATH=$PATH:~/.nix-profile/bin
+
 # less - use XDG Directories
 export LESSHISTFILE="${XDG_CONFIG_HOME}/less/history"
 export LESSKEY="${XDG_CONFIG_HOME}/less/keys"
@@ -62,9 +65,6 @@ export PATH=$PATH:$GEM_HOME/bin
 # Load nvm
 export NVM_DIR="$([ -z "${XDG_DATA_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_DATA_HOME}/nvm")"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-
-# nushell
-if [ -e $XDG_DATA_HOME/nu ]; then PATH=$PATH:"$XDG_DATA_HOME/nu/bin"; fi
 
 # Start starship prompt
 eval "$(starship init zsh)"
