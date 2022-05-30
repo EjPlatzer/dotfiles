@@ -44,6 +44,9 @@ let-env DOTNET_ROOT = $"($env.XDG_DATA_HOME)/dotnet"
 # Configure ruby gems
 let-env GEM_HOME = $"($env.XDG_DATA_HOME)/gem"
 
+# Configure Rust
+let-env CARGO_HOMW = $"($env.XDG_DATA_HOME)/cargo"
+
 # Set PATH
 let-env PATH = [/usr/local/bin, /usr/bin, /bin, /usr/sbin, /sbin, /nix/var/nix/profiles/default/bin, $"($env.HOME)/.nix-profile/bin", $"($env.XDG_DATA_HOME)/cargo/bin", $env.DOTNET_ROOT, $"($env.HOME)/.dotnet/tools", $"($env.GEM_HOME)/bin"]
 
