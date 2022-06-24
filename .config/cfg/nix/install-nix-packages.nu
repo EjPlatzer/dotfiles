@@ -1,20 +1,24 @@
-#!/bin/zsh
+#!/usr/bin/env nu
 # AUTHOR: Evan Platzer
-# DATE:   2021-07-09
-# DESC:   Install the nix packages recorded nix-packages.cfg
+# DATE: 2022-06-24
+# DESC: Install the recorded list on nix packages
 
-filepath=${XDG_HOME_CONFIG:-$HOME/.config}/myconf/nix/nix-packages.cfg
+let filepath = $"(if ($env.XDG_CONFIG_HOME != null) {$env.XDG_CONFIG_HOME} else {$"($nu.home-path)/.config"})/cfg/nix/nix-packages.cfg"
 
-echo Installing nix binaries listed at $filepath
-
-for line in "${(@f)"$(<$filepath)"}"
-{
-    echo Checking status of package $line
-    nix-env -q "$line" #2> /dev/null
-    if [ $? = 0 ]; then
-        echo $line is already installed
-    else
-        echo Installing $line
-        nix-env -i $line
-    fi
+if ($filepath | path exists) {
+    echo "Installing recorded nix packages"
+    open $filepath 
+    | lines 
+    | where { |$pkg| 
+        nix-env -q $pkg | empty? 
+    } 
+    | reduce { |$pkgs, $pkg| 
+        echo $"($pkg) will be installed"
+	$"(pkgs) ($pkg)"
+    } 
+    | nix-env -i $in
+    }
+} else {
+    echo "No previous nix packages record found"
 }
+
