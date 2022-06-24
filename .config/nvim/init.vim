@@ -14,8 +14,6 @@ call plug#begin(stdpath('config') . '/plugged')
 
 Plug 'tpope/vim-surround'
 
-Plug 'chaoren/vim-wordmotion'
-
 Plug 'dracula/vim',{'as':'dracula'}
 
 call plug#end()
