@@ -12,6 +12,8 @@ set relativenumber
 " Load plugins
 call plug#begin(stdpath('config') . '/plugged')
 
+Plug 'Mofiqul/dracula.nvim'
+
 Plug 'tpope/vim-surround'
 
 Plug 'chaoren/vim-wordmotion'
