@@ -35,16 +35,13 @@ let-env XDG_CACHE_HOME = $"($nu.home-path)/.cache"
 let-env XDG_DATA_HOME = $"($nu.home-path)/.local/share"
 let-env XDG_STATE_HOME = $"($nu.home-path)/.local/state"
 
-# Set PATH
-let-env PATH = [/usr/local/bin, /usr/bin, /bin, /usr/sbin, /sbin, /nix/var/nix/profiles/default/bin, $"($env.HOME)/.nix-profile/bin"]
-
 # Set Less history file
 let-env LESSHISTFILE = $"($env.XDG_CONFIG_HOME)/less/history"
 let-env LESSKEY = $"($env.XDG_CONFIG_HOME)/less/keys"
 
 # Starship prompt
 starship init nu | save $"($nu.home-path)/.cache/starship/init.nu"
-source /Users/evan/.cache/starship/init.nu
+source C:/Users/evan.platzer/.cache/starship/init.nu
 
 #######################################
 #   /_\ | |  |_ _| /_\ / __| __/ __| #
