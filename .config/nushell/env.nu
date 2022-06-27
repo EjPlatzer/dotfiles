@@ -42,9 +42,13 @@ let-env PATH = ($env.PATH | append $'($nu.home-path)/.nix-profile/bin')
 let-env LESSHISTFILE = $"($env.XDG_CONFIG_HOME)/less/history"
 let-env LESSKEY = $"($env.XDG_CONFIG_HOME)/less/keys"
 
-# Starship prompt
-starship init nu | save $"($nu.home-path)/.cache/starship/init.nu"
-source /Users/evan/.cache/starship/init.nu
+# Set default editor
+let-env EDITOR = 'nvim'
+let-env VISUAL = 'nvim'
+
+# init starship prompt
+starship init nu | save $"($env.XDG_CACHE_HOME)/starship/init.nu"
+source /home/evan/.cache/starship/init.nu
 
 # Load fnm vars and path
 fnm env --shell bash | lines | last 6 | str replace 'export ' '' | str replace -a '"' '' | split column = | rename name value | reduce -f {} { |it, acc| $acc | upsert $it.name $it.value }  | load-env
