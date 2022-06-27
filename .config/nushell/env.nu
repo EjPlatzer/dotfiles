@@ -57,5 +57,5 @@ alias nixu = (nix-channel --update; nix-env -u)
 alias nixg = (nix-collect-garbage -d)
 
 # Set dotfiles repo alias
-alias cfg = git $'--work-tree=($nu.home-path)' $'--git-dir=($nu.home-path)/.myconf'
+alias cfg = git $'--work-tree=($nu.home-path)' $'--git-dir=($nu.home-path)/.cfg'
 
