@@ -1,42 +1,47 @@
 # dotfiles
 
-A repo to manage my cross-system dotfiles and configurations. This serves three core purposes:
+A repo to manage my cross-platform dotfiles and configurations. This serves three core purposes:
 
 1. Preserving some core configurations in case of emergency.
 2. Synchronizing configurations/environments across machines to minimze the cost of context-switching
 3. Streamlining the process of configuring new/reset machines in the future
 
-The scripts in this repo only work in \*nix environments. The configuration files may be useful in Windows, but will likely have a different path.
+The scripts in this repo are primarily intended for Unix-like environments, although the `windows` branch has minor adjustments to make some things work in Windows.
+
+## Installation
+
+1. Clone the git repo
+    ```sh
+        git clone --bare git@github.com:EjPlatzer/dotfiles.git ~/.cfg
+    ```
+
+2. Add cfg alias for managing bare repo
+    ```nushell
+        alias cfg = git $'--work-tree=($nu.home-path)' $'--git-dir=($nu.home-path)/.cfg'
+    ```
+2. Disable untracked files
+    ```sh
+        cfg config --local status.showUntrackedFiles no
+    ```
+2. Restore missing files
+    ```sh
+        cfg restore --staged .; cfg restore .
+    ```
+
+You may need to restart the shell for the configurations to take effect.
 
 # Currently Synced
 
--   `git`, including:
-    -	configuration file
-    -	global ignore file
--   `zsh` shell, including:
-    -   appropriate dotfiles (`.zshenv`, `.zshrc`)
-    -   `starship` prompt
--   `alacritty` terminal emulator
-    -   Presently, only configuration files are synced. It may be worth automating installation in the future
--   `neovim` editor configuration, including
+-   `git`	configuration file
+-   `nushell`:
+    -   configuration
+    -   environment
+    -   scripts
+-   `nix` package list automation
+-   `starship` prompt
+-   `neovim` editor:
     -	`init.vim` configuration file	
     -	using `vim-plug` to manage plugins
--   Joplin settings (may currently be MacOS specific)
-<!-- Not currently synced
--   Rust, including:
-    -   `rustup` toolchain manager
-    -   `cargo`, the Rust package manager
-    -   Rust binaries as found in `.config/myconf/rust/rust-binaries.cfg`
--->
-
-# To Sync
-
-Applications/configurations that still require syncing:
-
--   VSCode
--   dotnet?
-
-It would be convenient to have some profiles that could be optionally included, such as an `nvm`/`npm` profile that would take care of that installation process for me but only if I desire it for the current machine.
 
 # Inspiration and Help
 
