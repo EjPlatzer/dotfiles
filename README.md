@@ -33,14 +33,14 @@ You may need to restart the shell for the configurations to take effect.
 
 # Currently Synced
 
--   `git`	configuration file
--   `nushell`:
+-   [`git`](https://git-scm.com/) configuration file
+-   [`nushell`](https://www.nushell.sh):
     -   configuration
     -   environment
     -   scripts
--   `nix` package list automation
--   `starship` prompt
--   `neovim` editor:
+-   [`nix`](https://nixos.org) package list automation
+-   [`starship`](https://starship.rs) prompt
+-   [`neovim`](https://neovim.io/) editor:
     -	`init.vim` configuration file	
     -	using `vim-plug` to manage plugins
 
