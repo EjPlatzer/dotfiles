@@ -3,7 +3,8 @@
 # DATE: 2022-04-14
 # DESC: Save the list of installed nix packages to a config file
 
-let filepath = $"(if ($env.XDG_CONFIG_HOME != null) {$env.XDG_CONFIG_HOME} else {$"($nu.home-path)/.config"})/myconf/nix/nix-packages.cfg"
+let config_path = if ('XDG_CONFIG_HOME' in (env).name) {$env.XDG_CONFIG_HOME} else {$"($nu.home-path)/.config"}
+let filepath = $"($config_path)/cfg/nix/nix-packages.cfg"
 
 if ($filepath | path exists) {
     echo "Backing up previous nix packages record"
