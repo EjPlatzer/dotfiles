@@ -12,20 +12,21 @@ The scripts in this repo are primarily intended for Unix-like environments, alth
 
 1. Clone the git repo
     ```sh
-        git clone --bare git@github.com:EjPlatzer/dotfiles.git ~/.cfg
+    git clone --bare git@github.com:EjPlatzer/dotfiles.git ~/.cfg
     ```
 
 2. Add cfg alias for managing bare repo
-    ```nushell
-        alias cfg = git $'--work-tree=($nu.home-path)' $'--git-dir=($nu.home-path)/.cfg'
+    ```nu
+    alias cfg = git $'--work-tree=($nu.home-path)' $'--git-dir=($nu.home-path)/.cfg'
     ```
 2. Disable untracked files
     ```sh
-        cfg config --local status.showUntrackedFiles no
+    cfg config --local status.showUntrackedFiles no
     ```
 2. Restore missing files
     ```sh
-        cfg restore --staged .; cfg restore .
+    cfg restore --staged .
+    cfg restore .
     ```
 
 You may need to restart the shell for the configurations to take effect.
