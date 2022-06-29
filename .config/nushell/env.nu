@@ -53,7 +53,7 @@ source /Users/evan/.cache/starship/init.nu
 #######################################                                 
 
 # Nix management aliases
-alias nixu = (nix-channel --update; nix-env -u)
+alias nixu = (nix-channel --update; home-manager switch)
 alias nixg = (nix-collect-garbage -d)
 
 # Set dotfiles repo alias
