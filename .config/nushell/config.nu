@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Nushell Config File
 
 module completions {
