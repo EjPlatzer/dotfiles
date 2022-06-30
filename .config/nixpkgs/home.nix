@@ -15,8 +15,8 @@
     pkgs.fzf
     pkgs.helix
     pkgs.hexyl
+    pkgs.lapce
     pkgs.neovim
-    pkgs.nushell
     pkgs.ripgrep
     pkgs.sd
     pkgs.starship
@@ -34,4 +34,12 @@
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
+
+  # Shell config
+  programs.nushell = {
+    enable = true;
+    # envFile = {
+    #   source = ~/.config/nushell/env.nu;
+    # };
+  };
 }

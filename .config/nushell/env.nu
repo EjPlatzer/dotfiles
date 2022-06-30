@@ -38,6 +38,9 @@ let-env XDG_STATE_HOME = $"($nu.home-path)/.local/state"
 # Set PATH
 let-env PATH = [/usr/local/bin, /usr/bin, /bin, /usr/sbin, /sbin, /nix/var/nix/profiles/default/bin, $"($env.HOME)/.nix-profile/bin"]
 
+# Set NIX_PATH
+let-env NIX_PATH = [~/.nix-defexpr/channels, /nix/var/nix/profiles/per-user/root/channels]
+
 # Set Less history file
 let-env LESSHISTFILE = $"($env.XDG_CONFIG_HOME)/less/history"
 let-env LESSKEY = $"($env.XDG_CONFIG_HOME)/less/keys"
@@ -53,7 +56,7 @@ source /Users/evan/.cache/starship/init.nu
 #######################################                                 
 
 # Nix management aliases
-alias nixu = (nix-channel --update; home-manager switch)
+alias nixu = (nix-channel --update; home-manager switch;)
 alias nixg = (nix-collect-garbage -d)
 
 # Set dotfiles repo alias
