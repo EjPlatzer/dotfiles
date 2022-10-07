@@ -10,9 +10,9 @@ if ($filepath | path exists) {
     echo "Installing recorded nix packages"
     let pkgs = (open $filepath
         | lines
-	| where { |$pkg| nix-env -q $pkg | empty? }
+	| where { |$pkg| nix-env -q $pkg | is-empty }
     )
-    if ($pkgs | empty?) {
+    if ($pkgs | is-empty) {
         echo "All recorded packages are already installed."
     } else {
         echo $"Installing packages ($pkgs)"
