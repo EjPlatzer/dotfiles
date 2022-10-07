@@ -15,7 +15,6 @@
     pkgs.fzf
     pkgs.helix
     pkgs.hexyl
-    pkgs.lapce
     pkgs.neovim
     pkgs.ripgrep
     pkgs.sd
