@@ -35,11 +35,32 @@ let-env XDG_CACHE_HOME = $"($nu.home-path)/.cache"
 let-env XDG_DATA_HOME = $"($nu.home-path)/.local/share"
 let-env XDG_STATE_HOME = $"($nu.home-path)/.local/state"
 
-# Set PATH
-let-env PATH = [/usr/local/bin, /usr/bin, /bin, /usr/sbin, /sbin, /nix/var/nix/profiles/default/bin, $"($env.HOME)/.nix-profile/bin"]
+# Set python startup script
+let-env PYTHONSTARTUP = $"($env.XDG_CONFIG_HOME)/python/startup.py"
 
-# Set NIX_PATH
-let-env NIX_PATH = [~/.nix-defexpr/channels, /nix/var/nix/profiles/per-user/root/channels]
+# Configure Dotnet tools
+let-env DOTNET_ROOT = $"($env.XDG_DATA_HOME)/dotnet"
+
+# Configure ruby gems
+let-env GEM_HOME = $"($env.XDG_DATA_HOME)/gem"
+
+# Configure Rust
+let-env CARGO_HOME = $"($env.XDG_DATA_HOME)/cargo"
+
+# Set PATH
+let-env PATH = [
+  /usr/local/bin
+  /usr/bin
+  /bin
+  /usr/sbin
+  /sbin
+  /nix/var/nix/profiles/default/bin
+  $"($env.HOME)/.nix-profile/bin"
+  $"($env.XDG_DATA_HOME)/cargo/bin"
+  $env.DOTNET_ROOT
+  $"($env.HOME)/.dotnet/tools"
+  $"($env.GEM_HOME)/bin"
+]
 
 # Set Less history file
 let-env LESSHISTFILE = $"($env.XDG_CONFIG_HOME)/less/history"
@@ -47,7 +68,15 @@ let-env LESSKEY = $"($env.XDG_CONFIG_HOME)/less/keys"
 
 # Starship prompt
 starship init nu | save $"($nu.home-path)/.cache/starship/init.nu"
-source /Users/evan/.cache/starship/init.nu
+source /Users/evan.platzer/.cache/starship/init.nu
+
+# Configure fnm for Node version management
+fnm env --shell bash | lines | last 6 | parse "export {name}="{value}"" | reduce -f {} { |it, acc| $acc | upsert $it.name $it.value } | load-env
+let-env PATH = ($env.PATH | append $"($env.FNM_MULTISHELL_PATH)/bin")
+
+# Editor
+let-env EDITOR = 'nvim'
+let-env VISUAL = 'nvim'
 
 #######################################
 #   /_\ | |  |_ _| /_\ / __| __/ __| #
@@ -56,7 +85,7 @@ source /Users/evan/.cache/starship/init.nu
 #######################################                                 
 
 # Nix management aliases
-alias nixu = (nix-channel --update; home-manager switch;)
+alias nixu = (nix-channel --update; nix-env -u;)
 alias nixg = (nix-collect-garbage -d)
 
 # Set dotfiles repo alias
