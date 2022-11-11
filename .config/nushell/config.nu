@@ -126,6 +126,17 @@ let default_theme = {
     shape_nothing: light_cyan
 }
 
+def 'find files' [ 
+    --exclude (-e): list # A list of (string) patterns to exclude from match
+] {
+  if ($exclude != $nothing) {
+    fd --prune -u $in /System/Volumes -E $exclude | lines
+  } else {
+    fd --prune -u $in /System/Volumes | lines
+  }
+}
+
+
 # The default config record. This is where much of your global configuration is setup.
 let-env config = {
   buffer_editor: "nvim"
