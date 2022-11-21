@@ -35,6 +35,9 @@ let-env XDG_CACHE_HOME = $"($nu.home-path)/.cache"
 let-env XDG_DATA_HOME = $"($nu.home-path)/.local/share"
 let-env XDG_STATE_HOME = $"($nu.home-path)/.local/state"
 
+# Set npm config path
+let-env NPM_CONFIG_USERCONFIG = $"($env.XDG_CONFIG_HOME)/npm/npmrc"
+
 # Set python startup script
 let-env PYTHONSTARTUP = $"($env.XDG_CONFIG_HOME)/python/startup.py"
 
@@ -50,6 +53,7 @@ let-env CARGO_HOME = $"($env.XDG_DATA_HOME)/cargo"
 # Set PATH
 let-env PATH = [
   /usr/local/bin
+  /usr/local/share/dotnet
   /usr/bin
   /bin
   /usr/sbin
@@ -57,6 +61,7 @@ let-env PATH = [
   /nix/var/nix/profiles/default/bin
   $"($env.HOME)/.nix-profile/bin"
   $"($env.XDG_DATA_HOME)/cargo/bin"
+  $"($env.XDG_DATA_HOME)/npm/bin"
   $env.DOTNET_ROOT
   $"($env.HOME)/.dotnet/tools"
   $"($env.GEM_HOME)/bin"
@@ -67,11 +72,11 @@ let-env LESSHISTFILE = $"($env.XDG_CONFIG_HOME)/less/history"
 let-env LESSKEY = $"($env.XDG_CONFIG_HOME)/less/keys"
 
 # Starship prompt
-starship init nu | save $"($nu.home-path)/.cache/starship/init.nu"
+# starship init nu | save $"($nu.home-path)/.cache/starship/init.nu"
 source /Users/evan.platzer/.cache/starship/init.nu
 
 # Configure fnm for Node version management
-fnm env --shell bash | lines | last 6 | parse "export {name}="{value}"" | reduce -f {} { |it, acc| $acc | upsert $it.name $it.value } | load-env
+fnm env --json | from json | load-env
 let-env PATH = ($env.PATH | append $"($env.FNM_MULTISHELL_PATH)/bin")
 
 # Editor
