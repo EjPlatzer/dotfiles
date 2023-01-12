@@ -47,7 +47,7 @@ let-env EDITOR = 'nvim'
 let-env VISUAL = 'nvim'
 
 # init starship prompt
-starship init nu | save $"($env.XDG_CACHE_HOME)/starship/init.nu"
+starship init nu | save $"($env.XDG_CACHE_HOME)/starship/init.nu" -f
 source /home/evan/.cache/starship/init.nu
 
 # Load fnm vars and path
