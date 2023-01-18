@@ -81,8 +81,8 @@ fnm env --json | from json | load-env
 let-env PATH = ($env.PATH | append $"($env.FNM_MULTISHELL_PATH)/bin")
 
 # Editor
-let-env EDITOR = 'nvim'
-let-env VISUAL = 'nvim'
+let-env EDITOR = 'lvim'
+let-env VISUAL = 'lvim'
 
 #######################################
 #   /_\ | |  |_ _| /_\ / __| __/ __| #
