@@ -8,10 +8,10 @@ let filepath = $"($config_path)/cfg/nix/nix-packages.cfg"
 
 if ($filepath | path exists) {
     echo "Backing up previous nix packages record"
-    mv $filepath $"($filepath).bak"
+    mv $filepath $"($filepath).bak" -f
 } else {
     echo "No previous nix packages record found"
 }
 
 echo $"Saving list of nix packages installed to ($filepath)"
-nix-env -q | parse -r '(?P<package>[\w-]+)-(?P<version>\d+.\d+.\d+)' | get package | save $filepath
+nix-env -q | parse -r '(?P<package>[\w-]+)-(?P<version>\d+.\d+.\d+)' | get package | save $filepath -f
