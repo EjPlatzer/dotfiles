@@ -5,114 +5,6 @@ let carapace_completer = {|spans|
   carapace $spans.0 nushell $spans | from json
 }
 
-# for more information on themes see
-# https://www.nushell.sh/book/coloring_and_theming.html
-let dark_theme = {
-    # color for nushell primitives
-    separator: white
-    leading_trailing_space_bg: { attr: n } # no fg, no bg, attr none effectively turns this off
-    header: green_bold
-    empty: blue
-    bool: white
-    int: white
-    filesize: white
-    duration: white
-    date: white
-    range: white
-    float: white
-    string: white
-    nothing: white
-    binary: white
-    cellpath: white
-    row_index: green_bold
-    record: white
-    list: white
-    block: white
-    hints: dark_gray
-
-    # shapes are used to change the cli syntax highlighting
-    shape_garbage: { fg: "#FFFFFF" bg: "#FF0000" attr: b}
-    shape_binary: purple_bold
-    shape_bool: light_cyan
-    shape_int: purple_bold
-    shape_float: purple_bold
-    shape_range: yellow_bold
-    shape_internalcall: cyan_bold
-    shape_external: cyan
-    shape_externalarg: green_bold
-    shape_literal: blue
-    shape_operator: yellow
-    shape_signature: green_bold
-    shape_string: green
-    shape_string_interpolation: cyan_bold
-    shape_datetime: cyan_bold
-    shape_list: cyan_bold
-    shape_table: blue_bold
-    shape_record: cyan_bold
-    shape_block: blue_bold
-    shape_filepath: cyan
-    shape_directory: cyan
-    shape_globpattern: cyan_bold
-    shape_variable: purple
-    shape_flag: blue_bold
-    shape_custom: green
-    shape_nothing: light_cyan
-    shape_matching_brackets: { attr: u }
-}
-
-let light_theme = {
-    # color for nushell primitives
-    separator: dark_gray
-    leading_trailing_space_bg: { attr: n } # no fg, no bg, attr none effectively turns this off
-    header: green_bold
-    empty: blue
-    bool: dark_gray
-    int: dark_gray
-    filesize: dark_gray
-    duration: dark_gray
-    date: dark_gray
-    range: dark_gray
-    float: dark_gray
-    string: dark_gray
-    nothing: dark_gray
-    binary: dark_gray
-    cellpath: dark_gray
-    row_index: green_bold
-    record: white
-    list: white
-    block: white
-    hints: dark_gray
-
-    # shapes are used to change the cli syntax highlighting
-    shape_garbage: { fg: "#FFFFFF" bg: "#FF0000" attr: b}
-    shape_binary: purple_bold
-    shape_bool: light_cyan
-    shape_int: purple_bold
-    shape_float: purple_bold
-    shape_range: yellow_bold
-    shape_internalcall: cyan_bold
-    shape_external: cyan
-    shape_externalarg: green_bold
-    shape_literal: blue
-    shape_operator: yellow
-    shape_signature: green_bold
-    shape_string: green
-    shape_string_interpolation: cyan_bold
-    shape_datetime: cyan_bold
-    shape_list: cyan_bold
-    shape_table: blue_bold
-    shape_record: cyan_bold
-    shape_block: blue_bold
-    shape_filepath: cyan
-    shape_directory: cyan
-    shape_globpattern: cyan_bold
-    shape_variable: purple
-    shape_flag: blue_bold
-    shape_custom: green
-    shape_nothing: light_cyan
-    shape_matching_brackets: { attr: u }
-}
-
 def 'find files' [ 
     --exclude (-e): list # A list of (string) patterns to exclude from match
 ] {
@@ -123,16 +15,62 @@ def 'find files' [
   }
 }
 
-# External completer example
-# let carapace_completer = {|spans| 
-#     carapace $spans.0 nushell $spans | from json
-# }
+let $tokyo_storm = {
+        # color for nushell primitives
+        separator: "#c0caf5"
+        leading_trailing_space_bg: { attr: n } # no fg, no bg, attr none effectively turns this off
+        header: "#9ece6a"
+        empty: "#7aa2f7"
+        bool: "#c0caf5"
+        int: "#c0caf5"
+        filesize: "#c0caf5"
+        duration: "#c0caf5"
+        date: "#c0caf5"
+        range: "#c0caf5"
+        float: "#c0caf5"
+        string: "#c0caf5"
+        nothing: "#c0caf5"
+        binary: "#c0caf5"
+        cellpath: "#c0caf5"
+        row_index: "#9ece6a"
+        record: "#c0caf5"
+        list: "#c0caf5"
+        block: "#c0caf5"
+        hints: "#414868"
+
+        # shapes are used to change the cli syntax highlighting
+        # shape_garbage: { fg: "#FFFFFF" bg: "#FF0000" attr: b}
+        shape_binary: "#bb9af7"
+        shape_bool: "#7dcfff"
+        shape_int: "#bb9af7"
+        shape_float: "#bb9af7"
+        shape_range: "#e0af68"
+        shape_internalcall: "#7dcfff"
+        shape_external: "#7dcfff"
+        shape_externalarg: "#9ece6a"
+        shape_literal: "#7aa2f7"
+        shape_operator: "#e0af68"
+        shape_signature: "#9ece6a"
+        shape_string: "#9ece6a"
+        shape_string_interpolation: "#7dcfff"
+        shape_datetime: "#7dcfff"
+        shape_list: "#7dcfff"
+        shape_table: "#7aa2f7"
+        shape_record: "#7dcfff"
+        shape_block: "#7aa2f7"
+        shape_filepath: "#7dcfff"
+        shape_globpattern: "#7dcfff"
+        shape_variable: "#bb9af7"
+        shape_flag: "#7aa2f7"
+        shape_custom: "#9ece6a"
+        shape_nothing: "#7dcfff"
+    } 
 
 
 # The default config record. This is where much of your global configuration is setup.
 let-env config = {
   ls: {
-    use_ls_colors: true # use the LS_COLORS environment variable to colorize output
+    # use_ls_colors: true # use the LS_COLORS environment variable to colorize output
     clickable_links: true # enable or disable clickable links. Your terminal has to support links.
   }
   rm: {
@@ -170,7 +108,7 @@ let-env config = {
     metric: true # true => KB, MB, GB (ISO standard), false => KiB, MiB, GiB (Windows standard)
     format: "auto" # b, kb, kib, mb, mib, gb, gib, tb, tib, pb, pib, eb, eib, zb, zib, auto
   }
-  color_config: $dark_theme   # if you want a light theme, replace `$dark_theme` to `$light_theme`
+  color_config: $tokyo_storm   # if you want a light theme, replace `$dark_theme` to `$light_theme`
   use_grid_icons: true
   footer_mode: "25" # always, never, number_of_rows, auto
   float_precision: 2

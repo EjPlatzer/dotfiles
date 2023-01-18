@@ -62,6 +62,7 @@ let-env PATH = [
   $"($env.HOME)/.nix-profile/bin"
   $"($env.XDG_DATA_HOME)/cargo/bin"
   $"($env.XDG_DATA_HOME)/npm/bin"
+  $"($nu.home-path)/.local/bin"
   $env.DOTNET_ROOT
   $"($env.HOME)/.dotnet/tools"
   $"($env.GEM_HOME)/bin"

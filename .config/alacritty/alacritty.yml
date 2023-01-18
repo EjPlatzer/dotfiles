@@ -1,0 +1,58 @@
+window:
+  opacity: 1
+  dynamic_padding: true
+  startup_mode: Maximized
+
+font:
+  normal:
+    family: "FiraCode Nerd Font"
+    style: Regular
+  bold:
+    family: "FiraCode Nerd Font"
+    style: Bold
+  italic:
+    family: "FiraCode Nerd Font"
+    style: Italic
+  bold_italic:
+    family: "FiraCode Nerd Font"
+    style: Bold Italic
+  size: 18.0
+
+# Colors (One Dark)
+colors:
+  # Default colors
+  primary:
+    background: '0x1e2127'
+    foreground: '0xabb2bf'
+
+  # Normal colors
+  normal:
+    black:   '0x1e2127'
+    red:     '0xe06c75'
+    green:   '0x98c379'
+    yellow:  '0xd19a66'
+    blue:    '0x61afef'
+    magenta: '0xc678dd'
+    cyan:    '0x56b6c2'
+    white:   '0xabb2bf'
+
+  # Bright colors
+  bright:
+    black:   '0x5c6370'
+    red:     '0xe06c75'
+    green:   '0x98c379'
+    yellow:  '0xd19a66'
+    blue:    '0x61afef'
+    magenta: '0xc678dd'
+    cyan:    '0x56b6c2'
+    white:   '0xffffff'
+
+cursor:
+  style: Block
+  unfocused_hollow: true
+
+key_bindings:
+  - { key: N,      mods: Command,         action: SpawnNewInstance }
+  - { key: Q,      mods: Command,         action: Quit             }
+  - { key: W,      mods: Command,         action: Quit             }
+  - { key: F,      mods: Command|Control, action: ToggleFullscreen }
