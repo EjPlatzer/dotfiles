@@ -5,6 +5,9 @@ window:
 
 shell:
   program: /Users/evan.platzer/.nix-profile/bin/zellij
+  args:
+    - attach
+    - -c
 
 font:
   normal:
