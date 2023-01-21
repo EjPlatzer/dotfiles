@@ -49,6 +49,7 @@ let-env GEM_HOME = $"($env.XDG_DATA_HOME)/gem"
 
 # Configure Rust
 let-env CARGO_HOME = $"($env.XDG_DATA_HOME)/cargo"
+let-env RUSTUP_HOME = $"($env.XDG_DATA_HOME)/rustup"
 
 # Set PATH
 let-env PATH = [
