@@ -74,7 +74,7 @@ let-env LESSHISTFILE = $"($env.XDG_CONFIG_HOME)/less/history"
 let-env LESSKEY = $"($env.XDG_CONFIG_HOME)/less/keys"
 
 # Starship prompt
-# starship init nu | save $"($nu.home-path)/.cache/starship/init.nu"
+starship init nu | save $"($nu.home-path)/.cache/starship/init.nu" -f
 source /Users/evan.platzer/.cache/starship/init.nu
 
 # Configure fnm for Node version management
@@ -82,8 +82,8 @@ fnm env --json | from json | load-env
 let-env PATH = ($env.PATH | append $"($env.FNM_MULTISHELL_PATH)/bin")
 
 # Editor
-let-env EDITOR = 'lvim'
-let-env VISUAL = 'lvim'
+let-env EDITOR = 'nvim'
+let-env VISUAL = 'nvim'
 
 #######################################
 #   /_\ | |  |_ _| /_\ / __| __/ __| #
