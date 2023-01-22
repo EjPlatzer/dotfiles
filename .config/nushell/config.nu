@@ -64,7 +64,8 @@ let $tokyo_storm = {
         shape_flag: "#7aa2f7"
         shape_custom: "#9ece6a"
         shape_nothing: "#7dcfff"
-} 
+    } 
+
 
 # The default config record. This is where much of your global configuration is setup.
 let-env config = {
@@ -87,64 +88,6 @@ let-env config = {
       truncating_suffix: "..." # A suffix used by the 'truncating' methodology
     }
   }
-
-  explore: {
-    help_banner: true
-    exit_esc: true
-
-    command_bar_text: '#C4C9C6'
-    # command_bar: {fg: '#C4C9C6' bg: '#223311' }
-
-    status_bar_background: {fg: '#1D1F21' bg: '#C4C9C6' }
-    # status_bar_text: {fg: '#C4C9C6' bg: '#223311' }
-
-    highlight: {bg: 'yellow' fg: 'black' }
-
-    status: {
-      # warn: {bg: 'yellow', fg: 'blue'}
-      # error: {bg: 'yellow', fg: 'blue'}
-      # info: {bg: 'yellow', fg: 'blue'}
-    }
-
-    try: {
-      # border_color: 'red'
-      # highlighted_color: 'blue'
-
-      # reactive: false
-    }
-
-    table: {
-      split_line: '#404040'
-
-      cursor: true
-
-      line_index: true
-      line_shift: true
-      line_head_top: true
-      line_head_bottom: true
-
-      show_head: true
-      show_index: true
-
-      # selected_cell: {fg: 'white', bg: '#777777'}
-      # selected_row: {fg: 'yellow', bg: '#C1C2A3'}
-      # selected_column: blue
-
-      # padding_column_right: 2
-      # padding_column_left: 2
-
-      # padding_index_left: 2
-      # padding_index_right: 1
-    }
-
-    config: {
-      cursor_color: {bg: 'yellow' fg: 'black' }
-
-      # border_color: white
-      # list_color: green
-    }
-  }
-
   history: {
     max_size: 10000 # Session has to be reloaded for this to take effect
     sync_on_enter: true # Enable to share history between multiple sessions, else you have to close the session to write history to file
@@ -193,7 +136,7 @@ let-env config = {
   }
   menus: [
       # Configuration for default nushell menus
-      # Note the lack of source parameter
+      # Note the lack of souce parameter
       {
         name: completion_menu
         only_buffer_difference: false
@@ -262,8 +205,8 @@ let-env config = {
         }
         source: { |buffer, position|
             $nu.scope.commands
-            | where name =~ $buffer
-            | each { |it| {value: $it.name description: $it.usage} }
+            | where command =~ $buffer
+            | each { |it| {value: $it.command description: $it.usage} }
         }
       }
       {
@@ -305,8 +248,8 @@ let-env config = {
         }
         source: { |buffer, position|
             $nu.scope.commands
-            | where name =~ $buffer
-            | each { |it| {value: $it.name description: $it.usage} }
+            | where command =~ $buffer
+            | each { |it| {value: $it.command description: $it.usage} }
         }
       }
   ]
@@ -315,7 +258,7 @@ let-env config = {
       name: completion_menu
       modifier: none
       keycode: tab
-      mode: [emacs vi_normal vi_insert]
+      mode: emacs # Options: emacs vi_normal vi_insert
       event: {
         until: [
           { send: menu name: completion_menu }
@@ -389,6 +332,7 @@ let-env config = {
         ]
       }
     }
+    # Keybindings used to trigger the user defined menus
     {
       name: commands_menu
       modifier: control
