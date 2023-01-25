@@ -15,56 +15,56 @@ def 'find files' [
   }
 }
 
-let $tokyo_storm = {
-        # color for nushell primitives
-        separator: "#c0caf5"
-        leading_trailing_space_bg: { attr: n } # no fg, no bg, attr none effectively turns this off
-        header: "#9ece6a"
-        empty: "#7aa2f7"
-        bool: "#c0caf5"
-        int: "#c0caf5"
-        filesize: "#c0caf5"
-        duration: "#c0caf5"
-        date: "#c0caf5"
-        range: "#c0caf5"
-        float: "#c0caf5"
-        string: "#c0caf5"
-        nothing: "#c0caf5"
-        binary: "#c0caf5"
-        cellpath: "#c0caf5"
-        row_index: "#9ece6a"
-        record: "#c0caf5"
-        list: "#c0caf5"
-        block: "#c0caf5"
-        hints: "#414868"
+let $one_dark = {
+  # color for nushell primitives
+  separator: "#c8ccd4"
+  leading_trailing_space_bg: { attr: n } # no fg, no bg, attr none effectively turns this off
+  header: "#98c379"
+  empty: "#61afef"
+  bool: "#c8ccd4"
+  int: "#c8ccd4"
+  filesize: "#c8ccd4"
+  duration: "#c8ccd4"
+  date: "#c8ccd4"
+  range: "#c8ccd4"
+  float: "#c8ccd4"
+  string: "#c8ccd4"
+  nothing: "#c8ccd4"
+  binary: "#c8ccd4"
+  cellpath: "#c8ccd4"
+  row_index: "#98c379"
+  record: "#c8ccd4"
+  list: "#c8ccd4"
+  block: "#c8ccd4"
+  hints: "#545862"
 
-        # shapes are used to change the cli syntax highlighting
-        # shape_garbage: { fg: "#FFFFFF" bg: "#FF0000" attr: b}
-        shape_binary: "#bb9af7"
-        shape_bool: "#7dcfff"
-        shape_int: "#bb9af7"
-        shape_float: "#bb9af7"
-        shape_range: "#e0af68"
-        shape_internalcall: "#7dcfff"
-        shape_external: "#7dcfff"
-        shape_externalarg: "#9ece6a"
-        shape_literal: "#7aa2f7"
-        shape_operator: "#e0af68"
-        shape_signature: "#9ece6a"
-        shape_string: "#9ece6a"
-        shape_string_interpolation: "#7dcfff"
-        shape_datetime: "#7dcfff"
-        shape_list: "#7dcfff"
-        shape_table: "#7aa2f7"
-        shape_record: "#7dcfff"
-        shape_block: "#7aa2f7"
-        shape_filepath: "#7dcfff"
-        shape_globpattern: "#7dcfff"
-        shape_variable: "#bb9af7"
-        shape_flag: "#7aa2f7"
-        shape_custom: "#9ece6a"
-        shape_nothing: "#7dcfff"
-    } 
+  # shapes are used to change the cli syntax highlighting
+  shape_garbage: { fg: "#FFFFFF" bg: "#FF0000" attr: b}
+  shape_binary: "#c678dd"
+  shape_bool: "#56b6c2"
+  shape_int: "#c678dd"
+  shape_float: "#c678dd"
+  shape_range: "#e5c07b"
+  shape_internalcall: "#56b6c2"
+  shape_external: "#56b6c2"
+  shape_externalarg: "#98c379"
+  shape_literal: "#61afef"
+  shape_operator: "#e5c07b"
+  shape_signature: "#98c379"
+  shape_string: "#98c379"
+  shape_string_interpolation: "#56b6c2"
+  shape_datetime: "#56b6c2"
+  shape_list: "#56b6c2"
+  shape_table: "#61afef"
+  shape_record: "#56b6c2"
+  shape_block: "#61afef"
+  shape_filepath: "#56b6c2"
+  shape_globpattern: "#56b6c2"
+  shape_variable: "#c678dd"
+  shape_flag: "#61afef"
+  shape_custom: "#98c379"
+  shape_nothing: "#56b6c2"
+} 
 
 
 # The default config record. This is where much of your global configuration is setup.
@@ -108,7 +108,7 @@ let-env config = {
     metric: true # true => KB, MB, GB (ISO standard), false => KiB, MiB, GiB (Windows standard)
     format: "auto" # b, kb, kib, mb, mib, gb, gib, tb, tib, pb, pib, eb, eib, zb, zib, auto
   }
-  color_config: $tokyo_storm   # if you want a light theme, replace `$dark_theme` to `$light_theme`
+  color_config: $one_dark   # if you want a light theme, replace `$dark_theme` to `$light_theme`
   use_grid_icons: true
   footer_mode: "25" # always, never, number_of_rows, auto
   float_precision: 2
