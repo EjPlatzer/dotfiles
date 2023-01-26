@@ -5,6 +5,8 @@ let carapace_completer = {|spans|
   carapace $spans.0 nushell $spans | from json
 }
 
+use nix.nu
+
 def 'find files' [ 
     --exclude (-e): list # A list of (string) patterns to exclude from match
 ] {

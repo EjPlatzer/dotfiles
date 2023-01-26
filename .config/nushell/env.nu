@@ -1,5 +1,11 @@
 # Nushell Environment Config File
 
+# Set XDG Dirs
+let-env XDG_CONFIG_HOME = $"($nu.home-path)/.config"
+let-env XDG_CACHE_HOME = $"($nu.home-path)/.cache"
+let-env XDG_DATA_HOME = $"($nu.home-path)/.local/share"
+let-env XDG_STATE_HOME = $"($nu.home-path)/.local/state"
+
 # Specifies how environment variables are:
 # - converted from a string to a value on Nushell startup (from_string)
 # - converted from a value back to a string when running external commands (to_string)
@@ -20,6 +26,7 @@ let-env ENV_CONVERSIONS = {
 # By default, <nushell-config-dir>/scripts is added
 let-env NU_LIB_DIRS = [
     ($nu.config-path | path dirname | path join 'scripts')
+    ($env.XDG_CONFIG_HOME | path join 'nushell/scripts')
 ]
 
 # Directories to search for plugin binaries when calling register
@@ -28,12 +35,6 @@ let-env NU_LIB_DIRS = [
 let-env NU_PLUGIN_DIRS = [
     ($nu.config-path | path dirname | path join 'plugins')
 ]
-
-# Set XDG Dirs
-let-env XDG_CONFIG_HOME = $"($nu.home-path)/.config"
-let-env XDG_CACHE_HOME = $"($nu.home-path)/.cache"
-let-env XDG_DATA_HOME = $"($nu.home-path)/.local/share"
-let-env XDG_STATE_HOME = $"($nu.home-path)/.local/state"
 
 # Set npm config path
 let-env NPM_CONFIG_USERCONFIG = $"($env.XDG_CONFIG_HOME)/npm/npmrc"
