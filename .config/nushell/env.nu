@@ -92,10 +92,6 @@ let-env VISUAL = 'nvim'
 # /_/ \_\____|___/_/ \_\___/___|___/ #
 #######################################                                 
 
-# Nix management aliases
-alias nixu = (nix-channel --update; nix-env -u;)
-alias nixg = (nix-collect-garbage -d)
-
 # Set dotfiles repo alias
 alias cfg = git $'--work-tree=($nu.home-path)' $'--git-dir=($nu.home-path)/.cfg'
 

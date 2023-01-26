@@ -63,3 +63,6 @@ export def install-saved [] {
     nix profile install $pkg_references
   }
 }
+
+export alias upgrade = (nix profile upgrade '.*')
+export alias clean = (nix profile wipe-history)
