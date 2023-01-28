@@ -65,4 +65,4 @@ export def install-saved [] {
 }
 
 export alias upgrade = (nix profile upgrade '.*')
-export alias clean = (nix profile wipe-history)
+export alias clean = (nix-collect-garbage -d)
