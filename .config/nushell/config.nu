@@ -34,6 +34,7 @@ let custom_config = {
     }
   },
   color_config: (themes default),
+  shell_integration: false,
   show_banner: false
 }
 
