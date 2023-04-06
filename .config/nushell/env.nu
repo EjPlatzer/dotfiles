@@ -1,4 +1,6 @@
 # Nushell Environment Config File
+#
+# version = 0.78.0
 
 # Set XDG Dirs
 let-env XDG_CONFIG_HOME = $"($nu.home-path)/.config"
@@ -6,18 +8,21 @@ let-env XDG_CACHE_HOME = $"($nu.home-path)/.cache"
 let-env XDG_DATA_HOME = $"($nu.home-path)/.local/share"
 let-env XDG_STATE_HOME = $"($nu.home-path)/.local/state"
 
+# Starship prompt
+source /home/evan/.cache/starship/init.nu
+
 # Specifies how environment variables are:
 # - converted from a string to a value on Nushell startup (from_string)
 # - converted from a value back to a string when running external commands (to_string)
 # Note: The conversions happen *after* config.nu is loaded
 let-env ENV_CONVERSIONS = {
   "PATH": {
-    from_string: { |s| $s | split row (char esep) }
-    to_string: { |v| $v | str collect (char esep) }
+    from_string: { |s| $s | split row (char esep) | path expand -n }
+    to_string: { |v| $v | path expand -n | str join (char esep) }
   }
   "Path": {
-    from_string: { |s| $s | split row (char esep) }
-    to_string: { |v| $v | str collect (char esep) }
+    from_string: { |s| $s | split row (char esep) | path expand -n }
+    to_string: { |v| $v | path expand -n | str join (char esep) }
   }
 }
 
@@ -81,10 +86,6 @@ let-env MANPAGER = "sh -c 'col -bx | bat -l man -p'"
 let-env LESSHISTFILE = $"($env.XDG_CONFIG_HOME)/less/history"
 let-env LESSKEY = $"($env.XDG_CONFIG_HOME)/less/keys"
 
-# Starship prompt
-starship init nu | save $"($nu.home-path)/.cache/starship/init.nu" -f
-source /home/evan/.cache/starship/init.nu
-
 # Configure fnm for Node version management
 fnm env --json | from json | load-env
 let-env PATH = ($env.PATH | append $"($env.FNM_MULTISHELL_PATH)/bin")
@@ -104,7 +105,7 @@ export def "config update default" [ --help (-h) ] {
 
   if ($env.DEFAULT_CONFIG_FILE| path expand | path exists) {
   print "Default config exists, updating"
-    let new = (fetch $default_url)
+    let new = (http get $default_url)
     let old = (open $env.DEFAULT_CONFIG_FILE)
 
     if $old != $new {
@@ -115,7 +116,7 @@ export def "config update default" [ --help (-h) ] {
     }
   } else {
   print "Default config doesn't exist, fetching"
-    fetch $default_url | save --raw $env.DEFAULT_CONFIG_FILE
+    http get $default_url | save --raw $env.DEFAULT_CONFIG_FILE
     print $'Downloaded new ($name)'
   }
 }
