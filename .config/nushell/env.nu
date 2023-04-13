@@ -1,4 +1,6 @@
 # Nushell Environment Config File
+#
+# version = 0.78.0
 
 # Set XDG Dirs
 let-env XDG_CONFIG_HOME = $"($nu.home-path)/.config"
@@ -12,12 +14,12 @@ let-env XDG_STATE_HOME = $"($nu.home-path)/.local/state"
 # Note: The conversions happen *after* config.nu is loaded
 let-env ENV_CONVERSIONS = {
   "PATH": {
-    from_string: { |s| $s | split row (char esep) }
-    to_string: { |v| $v | str collect (char esep) }
+    from_string: { |s| $s | split row (char esep) | path expand -n }
+    to_string: { |v| $v | path expand -n | str join (char esep) }
   }
   "Path": {
-    from_string: { |s| $s | split row (char esep) }
-    to_string: { |v| $v | str collect (char esep) }
+    from_string: { |s| $s | split row (char esep) | path expand -n }
+    to_string: { |v| $v | path expand -n | str join (char esep) }
   }
 }
 
@@ -82,7 +84,7 @@ let-env LESSHISTFILE = $"($env.XDG_CONFIG_HOME)/less/history"
 let-env LESSKEY = $"($env.XDG_CONFIG_HOME)/less/keys"
 
 # Starship prompt
-starship init nu | save $"($nu.home-path)/.cache/starship/init.nu" -f
+# starship init nu | save $"($nu.home-path)/.cache/starship/init.nu" -f
 source /Users/evan.platzer/.cache/starship/init.nu
 
 # Configure fnm for Node version management
@@ -104,7 +106,7 @@ export def "config update default" [ --help (-h) ] {
 
   if ($env.DEFAULT_CONFIG_FILE| path expand | path exists) {
   print "Default config exists, updating"
-    let new = (fetch $default_url)
+    let new = (http get $default_url)
     let old = (open $env.DEFAULT_CONFIG_FILE)
 
     if $old != $new {
@@ -115,7 +117,7 @@ export def "config update default" [ --help (-h) ] {
     }
   } else {
   print "Default config doesn't exist, fetching"
-    fetch $default_url | save --raw $env.DEFAULT_CONFIG_FILE
+    http get $default_url | save --raw $env.DEFAULT_CONFIG_FILE
     print $'Downloaded new ($name)'
   }
 }
