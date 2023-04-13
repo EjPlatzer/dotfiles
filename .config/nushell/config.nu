@@ -6,6 +6,7 @@ let carapace_completer = {|spans|
 }
 
 use nix.nu
+use nvim.nu *
 use themes.nu
 
 def 'find files' [ 
