@@ -11,7 +11,7 @@ format = "[ \uf07b $path]($style)[$read_only]($read_only_style) "
 [username]
 style_user = "blue"
 style_root = "red"
-format = "[\uf508 $user on]($style)"
+format = "[  $user on]($style)"
 show_always = true
 
 [os]
