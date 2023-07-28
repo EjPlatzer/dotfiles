@@ -40,4 +40,4 @@ let custom_config = {
 
 # Use default config with custom overrides
 source default_config.nu
-let-env config = ($env.config | merge $custom_config)
+$env.config = ($env.config | merge $custom_config)

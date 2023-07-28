@@ -3,16 +3,16 @@
 # version = 0.78.0
 
 # Set XDG Dirs
-let-env XDG_CONFIG_HOME = $"($nu.home-path)/.config"
-let-env XDG_CACHE_HOME = $"($nu.home-path)/.cache"
-let-env XDG_DATA_HOME = $"($nu.home-path)/.local/share"
-let-env XDG_STATE_HOME = $"($nu.home-path)/.local/state"
+$env.XDG_CONFIG_HOME = $"($nu.home-path)/.config"
+$env.XDG_CACHE_HOME = $"($nu.home-path)/.cache"
+$env.XDG_DATA_HOME = $"($nu.home-path)/.local/share"
+$env.XDG_STATE_HOME = $"($nu.home-path)/.local/state"
 
 # Specifies how environment variables are:
 # - converted from a string to a value on Nushell startup (from_string)
 # - converted from a value back to a string when running external commands (to_string)
 # Note: The conversions happen *after* config.nu is loaded
-let-env ENV_CONVERSIONS = {
+$env.ENV_CONVERSIONS = {
   "PATH": {
     from_string: { |s| $s | split row (char esep) | path expand -n }
     to_string: { |v| $v | path expand -n | str join (char esep) }
@@ -26,10 +26,10 @@ let-env ENV_CONVERSIONS = {
 # Directories to search for scripts when calling source or use
 #
 # By default, <nushell-config-dir>/scripts is added
-let-env NU_LIB_DIR = ($nu.config-path | path dirname | path join 'scripts')
-let-env NU_SCRIPTS_DIR = ($env.XDG_CONFIG_HOME | path join 'nushell' 'scripts')
+$env.NU_LIB_DIR = ($nu.config-path | path dirname | path join 'scripts')
+$env.NU_SCRIPTS_DIR = ($env.XDG_CONFIG_HOME | path join 'nushell' 'scripts')
 
-let-env NU_LIB_DIRS = [
+$env.NU_LIB_DIRS = [
     $env.NU_LIB_DIR
     $env.NU_SCRIPTS_DIR
 ]
@@ -37,29 +37,29 @@ let-env NU_LIB_DIRS = [
 # Directories to search for plugin binaries when calling register
 #
 # By default, <nushell-config-dir>/plugins is added
-let-env NU_PLUGIN_DIRS = [
+$env.NU_PLUGIN_DIRS = [
     ($nu.config-path | path dirname | path join 'plugins')
 ]
 
 # Set npm config path
-let-env NODE_REPL_HISTORY = $"($env.XDG_DATA_HOME)/node_repl_history"
-let-env NPM_CONFIG_USERCONFIG = $"($env.XDG_CONFIG_HOME)/npm/npmrc"
+$env.NODE_REPL_HISTORY = $"($env.XDG_DATA_HOME)/node_repl_history"
+$env.NPM_CONFIG_USERCONFIG = $"($env.XDG_CONFIG_HOME)/npm/npmrc"
 
 # Set python startup script
-let-env PYTHONSTARTUP = $"($env.XDG_CONFIG_HOME)/python/startup.py"
+$env.PYTHONSTARTUP = $"($env.XDG_CONFIG_HOME)/python/startup.py"
 
 # Configure Dotnet tools
-let-env DOTNET_ROOT = $"($env.XDG_DATA_HOME)/dotnet"
+$env.DOTNET_ROOT = $"($env.XDG_DATA_HOME)/dotnet"
 
 # Configure ruby gems
-let-env GEM_HOME = $"($env.XDG_DATA_HOME)/gem"
+$env.GEM_HOME = $"($env.XDG_DATA_HOME)/gem"
 
 # Configure Rust
-let-env CARGO_HOME = $"($env.XDG_DATA_HOME)/cargo"
-let-env RUSTUP_HOME = $"($env.XDG_DATA_HOME)/rustup"
+$env.CARGO_HOME = $"($env.XDG_DATA_HOME)/cargo"
+$env.RUSTUP_HOME = $"($env.XDG_DATA_HOME)/rustup"
 
 # Set PATH
-let-env PATH = [
+$env.PATH = [
   /usr/local/bin
   /usr/local/share/dotnet
   /usr/bin
@@ -77,11 +77,11 @@ let-env PATH = [
 ]
 
 # "bat" as manpager
-let-env MANPAGER = "sh -c 'col -bx | bat -l man -p'"
+$env.MANPAGER = "sh -c 'col -bx | bat -l man -p'"
 
 # Set Less history file
-let-env LESSHISTFILE = $"($env.XDG_CONFIG_HOME)/less/history"
-let-env LESSKEY = $"($env.XDG_CONFIG_HOME)/less/keys"
+$env.LESSHISTFILE = $"($env.XDG_CONFIG_HOME)/less/history"
+$env.LESSKEY = $"($env.XDG_CONFIG_HOME)/less/keys"
 
 # Starship prompt
 # starship init nu | save $"($nu.home-path)/.cache/starship/init.nu" -f
@@ -89,14 +89,14 @@ source /Users/evan.platzer/.cache/starship/init.nu
 
 # Configure fnm for Node version management
 fnm env --json | from json | load-env
-let-env PATH = ($env.PATH | append $"($env.FNM_MULTISHELL_PATH)/bin")
+$env.PATH = ($env.PATH | append $"($env.FNM_MULTISHELL_PATH)/bin")
 
 # Editor
-let-env EDITOR = 'nvim'
-let-env VISUAL = $env.EDITOR
+$env.EDITOR = 'nvim'
+$env.VISUAL = $env.EDITOR
 
-let-env DEFAULT_CONFIG_FILE = $"($env.NU_LIB_DIR)/default_config.nu"
-let-env DEFAULT_CONFIG_REMOTE = "https://raw.githubusercontent.com/nushell/nushell/main/crates/nu-utils/src/sample_config"
+$env.DEFAULT_CONFIG_FILE = $"($env.NU_LIB_DIR)/default_config.nu"
+$env.DEFAULT_CONFIG_REMOTE = "https://raw.githubusercontent.com/nushell/nushell/main/crates/nu-utils/src/sample_config"
 
 
 export def "config update default" [ --help (-h) ] {
