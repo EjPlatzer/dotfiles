@@ -7,7 +7,7 @@ let carapace_completer = {|spans|
 
 use nix.nu
 use nvim.nu *
-use themes.nu
+use themes
 
 def 'find files' [ 
     --exclude (-e): list # A list of (string) patterns to exclude from match
@@ -34,7 +34,7 @@ let custom_config = {
       completer: $carapace_completer
     }
   },
-  color_config: (themes default),
+  color_config: (themes dracula),
   show_banner: false
 }
 
