@@ -135,5 +135,4 @@ if not ($env.DEFAULT_CONFIG_FILE | path exists) {
 #######################################                                 
 
 # Set dotfiles repo alias
-alias cfg = ^git --work-tree $nu.home-path --git-dir $'($nu.home-path)/.dotfiles'
-
+alias cfg = git --work-tree $nu.home-path --git-dir $'($nu.home-path)/.dotfiles'
