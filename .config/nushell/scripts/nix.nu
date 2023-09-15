@@ -6,27 +6,14 @@ def backup_file [] {
   $"($config_path)/nix/nix-packages.cfg" 
 }
 
-def packages [] {
-  nix profile list 
-  | lines 
-  | split column ' ' 
-  | reject column3
-  | rename number name version
-  | update name {|pkg|
-    $pkg.name 
-    | parse -r '.+\.(?<package>[\w\-]+)' 
-    | get 0.package 
-  } 
-  | update version {|pkg
-    | $pkg.version 
-    | parse -r ($".*-($pkg.name)" + '-(?<version>.*)') 
-    | get 0.version 
-  } 
-}
-
-export def pkgs [] {
-  packages
-  | select number name version
+export def packages [] {
+  nix profile list --json
+  | from json
+  | get elements.storePaths
+  | flatten
+  | parse -r '/nix/store/[\w\d]+-(?<name>[\w-]+)-(?<version>.+)'
+  | enumerate
+  | flatten
 }
 
 export def backup [] {
