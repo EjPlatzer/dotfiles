@@ -85,7 +85,7 @@ $env.LESSKEY = $"($env.XDG_CONFIG_HOME)/less/keys"
 
 # Starship prompt
 # starship init nu | save $"($nu.home-path)/.cache/starship/init.nu" -f
-source /Users/evan.platzer/.cache/starship/init.nu
+source /home/evan/.cache/starship/init.nu
 
 # Configure fnm for Node version management
 fnm env --json | from json | load-env

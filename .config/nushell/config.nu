@@ -23,9 +23,6 @@ let custom_config = {
   rm: {
     always_trash: true
   },
-  cd: {
-    abbreviations: true
-  },
   table: {
     index_mode: 'auto'
   },
