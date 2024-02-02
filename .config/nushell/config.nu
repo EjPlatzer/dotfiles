@@ -12,7 +12,7 @@ use themes
 def 'find files' [ 
     --exclude (-e): list # A list of (string) patterns to exclude from match
 ] {
-  if ($exclude != $nothing) {
+  if ($exclude != null) {
     fd --prune -u $in /System/Volumes -E $exclude | lines
   } else {
     fd --prune -u $in /System/Volumes | lines
@@ -31,7 +31,6 @@ let custom_config = {
       completer: $carapace_completer
     }
   },
-  color_config: (themes dracula),
   show_banner: false
 }
 
