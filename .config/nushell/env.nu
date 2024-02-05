@@ -87,6 +87,11 @@ $env.LESSKEY = $"($env.XDG_CONFIG_HOME)/less/keys"
 # starship init nu | save $"($nu.home-path)/.cache/starship/init.nu" -f
 source /home/evan/.cache/starship/init.nu
 
+# Carapace completions
+$env.CARAPACE_BRIDGES = 'zsh,fish,bash,inshellisense' # optional
+# mkdir ~/.cache/carapace
+# carapace _carapace nushell | save --force ~/.cache/carapace/init.nu
+
 # Configure fnm for Node version management
 fnm env --json | from json | load-env
 $env.PATH = ($env.PATH | append $"($env.FNM_MULTISHELL_PATH)/bin")
