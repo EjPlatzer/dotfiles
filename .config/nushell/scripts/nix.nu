@@ -1,6 +1,3 @@
-def config_path [] {
-}
-
 def backup_file [] { 
   let config_path = ($env.XDG_CONFIG_HOME | default $"($nu.home-path)/.config")
   $"($config_path)/nix/nix-packages.cfg" 
@@ -10,7 +7,7 @@ export def packages [] {
   nix profile list --json
   | from json
   | get elements.storePaths
-  | flatten
+  | each { first }
   | parse -r '/nix/store/[\w\d]+-(?<name>[\w-]+)-(?<version>.+)'
   | enumerate
   | flatten
