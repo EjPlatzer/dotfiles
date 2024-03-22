@@ -2,9 +2,6 @@
     email = evan.platzer@gmail.com
     name = Evan Platzer
 
-[core]
-    pager = delta
-
 [merge]
     conflictstyle = zdiff3
 
@@ -15,7 +12,7 @@
     ff = only
 
 [pager]
-    diff = delta
+	difftool = true
     log = delta
     reflog = delta
     show = delta
@@ -28,8 +25,14 @@
         syntax-theme = Dracula
 
 [diff]
+	tool = difftastic
+	external = difft
     colorMoved = default
 	algorithm = histogram
+[difftool]
+	prompt = false
+[difftool "difftastic"]
+	cmd = difft "$LOCAL" "$REMOTE"
 [init]
 	defaultBranch = main
 [credential "https://dev.azure.com"]
