@@ -6,11 +6,9 @@ def backup_file [] {
 export def packages [] {
   nix profile list --json
   | from json
-  | get elements.storePaths
-  | each { first }
+  | get elements
+  | items { |name, pkg| $pkg.storePaths | first }
   | parse -r '/nix/store/[\w\d]+-(?<name>[\w-]+)-(?<version>.+)'
-  | enumerate
-  | flatten
 }
 
 export def backup [] {
@@ -57,7 +55,7 @@ export def install-saved [] {
   } else {
     print $"Installing packages ($pkgs_to_install)"
     let pkg_references = ($pkgs_to_install | each {|$pkg| $'nixpkgs#($pkg)'})
-    nix profile install $pkg_references
+    nix profile install ...$pkg_references
   }
 }
 
