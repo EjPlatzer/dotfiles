@@ -1,8 +1,12 @@
 # Nushell Config File
 
+# Print message on startup
+print $"(ansi cyan_italic)-> Love God, Love Others (ansi reset)"
+
 # Completions with carapace
 source ~/.cache/carapace/init.nu
 
+use pkgs.nu
 use nix.nu
 use nvim.nu *
 
@@ -34,3 +38,4 @@ let custom_config = {
 # Use default config with custom overrides
 source default_config.nu
 $env.config = ($env.config | merge $custom_config)
+
