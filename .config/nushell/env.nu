@@ -48,12 +48,6 @@ $env.NPM_CONFIG_USERCONFIG = $"($env.XDG_CONFIG_HOME)/npm/npmrc"
 # Set python startup script
 $env.PYTHONSTARTUP = $"($env.XDG_CONFIG_HOME)/python/startup.py"
 
-# Configure Dotnet tools
-$env.DOTNET_ROOT = $"($env.XDG_DATA_HOME)/dotnet"
-
-# Configure ruby gems
-$env.GEM_HOME = $"($env.XDG_DATA_HOME)/gem"
-
 # Configure Rust
 $env.CARGO_HOME = $"($env.XDG_DATA_HOME)/cargo"
 $env.RUSTUP_HOME = $"($env.XDG_DATA_HOME)/rustup"
@@ -61,19 +55,13 @@ $env.RUSTUP_HOME = $"($env.XDG_DATA_HOME)/rustup"
 # Set PATH
 $env.PATH = [
   /usr/local/bin
-  /usr/local/share/dotnet
   /usr/bin
   /bin
   /usr/sbin
   /sbin
   /nix/var/nix/profiles/default/bin
   $"($env.HOME)/.nix-profile/bin"
-  $"($env.XDG_DATA_HOME)/cargo/bin"
-  $"($env.XDG_DATA_HOME)/npm/bin"
   $"($nu.home-path)/.local/bin"
-  $env.DOTNET_ROOT
-  $"($env.HOME)/.dotnet/tools"
-  $"($env.GEM_HOME)/bin"
 ]
 
 # "bat" as manpager
@@ -97,21 +85,18 @@ fnm env --json | from json | load-env
 $env.PATH = ($env.PATH | append $"($env.FNM_MULTISHELL_PATH)/bin")
 
 # Editor
-$env.EDITOR = 'nvim'
+$env.EDITOR = 'hx'
 $env.VISUAL = $env.EDITOR
 
 $env.DEFAULT_CONFIG_FILE = $"($env.NU_LIB_DIR)/default_config.nu"
-$env.DEFAULT_CONFIG_REMOTE = "https://raw.githubusercontent.com/nushell/nushell/main/crates/nu-utils/src/sample_config"
 
-
-export def "config update default" [ --help (-h) ] {
-  print "Starting to update default config"
+export def "config update default" [] {
+  print "Updating default config"
   let name = ($env.DEFAULT_CONFIG_FILE | path basename)
-  let default_url = ($env.DEFAULT_CONFIG_REMOTE | path join $name)
+  let new = (config nu --default)
 
-  if ($env.DEFAULT_CONFIG_FILE| path expand | path exists) {
+  if ($env.DEFAULT_CONFIG_FILE | path expand | path exists) {
   print "Default config exists, updating"
-    let new = (http get $default_url)
     let old = (open $env.DEFAULT_CONFIG_FILE)
 
     if $old != $new {
@@ -122,8 +107,8 @@ export def "config update default" [ --help (-h) ] {
     }
   } else {
   print "Default config doesn't exist, fetching"
-    http get $default_url | save --raw $env.DEFAULT_CONFIG_FILE
-    print $'Downloaded new ($name)'
+    $new | save --raw $env.DEFAULT_CONFIG_FILE
+    print $'Saved new ($name)'
   }
 }
 
