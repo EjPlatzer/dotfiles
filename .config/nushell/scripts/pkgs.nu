@@ -3,7 +3,10 @@ def backup_file [] {
   $"($config_path)/evan/packages.cfg" 
 }
 
-export def list [--manager (-m): string] {
+# List packages installed via the specified package manager
+export def list [
+  --manager (-m): string # the package manager to reference
+] {
   match $manager {
     "nix" => {
       nix profile list --json
@@ -21,7 +24,10 @@ export def list [--manager (-m): string] {
   }
 }
 
-export def backup [--manager (-m): string] {
+# Save a list of packages installed via the specified package manager
+export def backup [
+  --manager (-m): string # the package manager to reference
+] {
   let installed = (list -m $manager | get name)
 
   print "beginning backup"
@@ -46,7 +52,10 @@ export def backup [--manager (-m): string] {
   $installed | save $backup_file -f
 }
 
-export def install-saved [--manager (-m): string] {
+# Install the saved list of packages
+export def install-saved [
+  --manager (-m): string # The package manager to reference
+] {
   let backup_file = backup_file
 
   print $"backup_file is ($backup_file)"
