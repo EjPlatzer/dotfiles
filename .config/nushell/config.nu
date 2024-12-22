@@ -22,6 +22,7 @@ def 'find files' [
 $env.config.rm.always_trash = true
 $env.config.table.index_mode = 'auto'
 $env.config.completions.external.completer = $carapace_completer
+$env.config.show_banner = false
 
 # Print message on startup
 print $"(ansi cyan_italic)-> Love God, Love Others (ansi reset)"
