@@ -62,6 +62,7 @@ $env.PATH = [
   /nix/var/nix/profiles/default/bin
   $"($env.HOME)/.nix-profile/bin"
   $"($nu.home-path)/.local/bin"
+  $"($env.CARGO_HOME)/bin"
 ]
 
 # "bat" as manpager

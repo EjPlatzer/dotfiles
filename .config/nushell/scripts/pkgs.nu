@@ -1,6 +1,6 @@
 def backup_file [] { 
   let config_path = ($env.XDG_CONFIG_HOME | default $"($nu.home-path)/.config")
-  $"($config_path)/evan/packages.cfg" 
+  $"($config_path)/me/packages-nix.cfg" 
 }
 
 # List packages installed via the specified package manager
@@ -73,6 +73,7 @@ export def install-saved [
 
   let pkgs_to_install = ($saved_pkgs | filter {|$pkg| $pkg not-in $installed_pkgs})
 	
+	$pkgs_to_install | debug
   
   if ($pkgs_to_install | is-empty) {
     print "All recorded packages are already installed."
