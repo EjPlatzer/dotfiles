@@ -89,36 +89,6 @@ $env.PATH = ($env.PATH | append $"($env.FNM_MULTISHELL_PATH)/bin")
 $env.EDITOR = 'hx'
 $env.VISUAL = $env.EDITOR
 
-$env.DEFAULT_CONFIG_FILE = $"($env.NU_LIB_DIR)/default_config.nu"
-
-export def "config update default" [] {
-  print "Updating default config"
-  let name = ($env.DEFAULT_CONFIG_FILE | path basename)
-  let new = (config nu --default)
-
-  if ($env.DEFAULT_CONFIG_FILE | path expand | path exists) {
-  print "Default config exists, updating"
-    let old = (open $env.DEFAULT_CONFIG_FILE)
-
-    if $old != $new {
-      $new | save --force --raw $env.DEFAULT_CONFIG_FILE
-      print $'Updated ($name)'
-    } else {
-      print $'($name): No change'
-    }
-  } else {
-  print "Default config doesn't exist, fetching"
-    $new | save --raw $env.DEFAULT_CONFIG_FILE
-    print $'Saved new ($name)'
-  }
-}
-
-if not ($env.DEFAULT_CONFIG_FILE | path exists) {
-  print $"(ansi red_bold)error(ansi reset): ($env.DEFAULT_CONFIG_FILE) does not exist..."
-  print $"(ansi cyan)info(ansi reset): pulling default config file..."
-  config update default
-}
-
 #######################################
 #   /_\ | |  |_ _| /_\ / __| __/ __| #
 #  / _ \| |__ | | / _ \\__ \ _|\__ \ #

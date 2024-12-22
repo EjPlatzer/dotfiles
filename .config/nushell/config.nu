@@ -19,24 +19,9 @@ def 'find files' [
   }
 }
 
-let custom_config = {
-  rm: {
-    always_trash: true
-  },
-  table: {
-    index_mode: 'auto'
-  },
-  completions: {
-    external: {
-      completer: $carapace_completer
-    }
-  },
-  show_banner: false
-}
-
-# Use default config with custom overrides
-source default_config.nu
-$env.config = ($env.config | merge $custom_config)
+$env.config.rm.always_trash = true
+$env.config.table.index_mode = 'auto'
+$env.config.completions.external.completer = $carapace_completer
 
 # Print message on startup
 print $"(ansi cyan_italic)-> Love God, Love Others (ansi reset)"
