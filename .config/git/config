@@ -41,3 +41,5 @@
 	helper = !/home/evan/.nix-profile/bin/gh auth git-credential
 [credential "https://gist.github.com"]
 	helper = !/home/evan/.nix-profile/bin/gh auth git-credential
+[core]
+	autocrlf = input
