@@ -1,11 +1,3 @@
-export def upgrade [] {
-  nix profile upgrade '.*'
-}
-
-export def clean [] {
-  nix-collect-garbage -d
-}
-
-export def history [] {
-  nix profile history
-}
+alias nixu = nix profile upgrade --all
+alias nixh = nix profile history
+alias nixc = nix-collect-garbage -d
