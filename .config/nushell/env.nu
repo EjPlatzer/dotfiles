@@ -8,39 +8,6 @@ $env.XDG_CACHE_HOME = $"($nu.home-path)/.cache"
 $env.XDG_DATA_HOME = $"($nu.home-path)/.local/share"
 $env.XDG_STATE_HOME = $"($nu.home-path)/.local/state"
 
-# Specifies how environment variables are:
-# - converted from a string to a value on Nushell startup (from_string)
-# - converted from a value back to a string when running external commands (to_string)
-# Note: The conversions happen *after* config.nu is loaded
-$env.ENV_CONVERSIONS = {
-  "PATH": {
-    from_string: { |s| $s | split row (char esep) | path expand -n }
-    to_string: { |v| $v | path expand -n | str join (char esep) }
-  }
-  "Path": {
-    from_string: { |s| $s | split row (char esep) | path expand -n }
-    to_string: { |v| $v | path expand -n | str join (char esep) }
-  }
-}
-
-# Directories to search for scripts when calling source or use
-#
-# By default, <nushell-config-dir>/scripts is added
-$env.NU_LIB_DIR = ($nu.config-path | path dirname | path join 'scripts')
-$env.NU_SCRIPTS_DIR = ($env.XDG_CONFIG_HOME | path join 'nushell' 'scripts')
-
-$env.NU_LIB_DIRS = [
-    $env.NU_LIB_DIR
-    $env.NU_SCRIPTS_DIR
-]
-
-# Directories to search for plugin binaries when calling register
-#
-# By default, <nushell-config-dir>/plugins is added
-$env.NU_PLUGIN_DIRS = [
-    ($nu.config-path | path dirname | path join 'plugins')
-]
-
 # Set npm config path
 $env.NODE_REPL_HISTORY = $"($env.XDG_DATA_HOME)/node_repl_history"
 $env.NPM_CONFIG_USERCONFIG = $"($env.XDG_CONFIG_HOME)/npm/npmrc"
