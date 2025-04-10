@@ -33,7 +33,7 @@ $env.PATH = [
 ]
 
 # "bat" as manpager
-$env.MANPAGER = "sh -c 'col -bx | bat -l man -p'"
+$env.MANPAGER = "nvim +Man!"
 
 # Set Less history file
 $env.LESSHISTFILE = $"($env.XDG_CONFIG_HOME)/less/history"
